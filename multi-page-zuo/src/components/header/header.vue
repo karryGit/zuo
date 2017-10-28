@@ -77,9 +77,7 @@
   }
 </script>
 <style scoped>
-  #header-container {
 
-  }
 
   #topic_container {
     width: 50%;

@@ -13,6 +13,7 @@
   import MyNav from '../../components/nav/Nav';
   import MyHeader from '../../components/header/header';
   import MyHotTags from '../../components/hotTags/hotTags';
+  import MyAttention from '../../components/Attention/Attention';
 
   export default {
     name: 'index',
@@ -32,7 +33,7 @@
   background-color: rgb(246, 246, 246);
 }
   #wrap {
-    width: 85%;
+    width: 86%;
     margin: 0 auto;
   }
   #right {

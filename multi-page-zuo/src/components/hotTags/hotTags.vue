@@ -35,18 +35,18 @@
 
 <style scoped>
   #hot_container {
-    width: 220px;
+    width: 234px;
     position: relative;
   }
-
   .side-title {
 
   }
 
   .btn {
+    border: none;
     margin: 5px;
     color: rgb(153, 155, 156);
-    padding: 5px;
+    padding: 8px;
     background-color: rgb(234, 236, 237);
   }
 
