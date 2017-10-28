@@ -1,9 +1,10 @@
 <template>
   <div>
+
     <!--全局容器-->
     <header id="zuo-content-container">
       <!--头部标题部分-->
-      <header id="zuo-header" v-show="isShow" >
+      <header id="zuo-header" v-show="isShow">
         <div class="welcome-body">
           <h3>可能是全宇宙最ZUO的图片社区</h3>
           <div class="subtip">
@@ -11,34 +12,26 @@
             <br>
             <span class="subtip2">从设计的视角，重新认识世界</span>
           </div>
-          <button id="new-zuoer-link"><a href="login.html">创建ZUO账号</a></button>
+          <button id="new-zuoer-link"><a href="logon.html">创建ZUO账号</a></button>
         </div>
         <div class="close" @click="hide">
           <img src="../../assets/close1.png"/>
         </div>
       </header>
-
     </header>
-
-    <!--<p>我是首页, 点我去<a href="about.html">关于页面</a></p>-->
-
   </div>
 </template>
 <script>
 
-
-
-  import axios from 'axios';
-
   export default {
     name: 'Index',
-    data(){
-      return{
-        isShow:true
+    data() {
+      return {
+        isShow: true
       }
     },
-    methods:{
-      hide(){
+    methods: {
+      hide() {
         this.isShow = false;
       }
     }
@@ -46,9 +39,16 @@
 </script>
 
 <style scoped>
+  body {
+    width: 100%;
+    height: 5000px;
+    background-color: rgb(246, 246, 246);
+  }
+
   #zuo-content-container {
     padding-top: 40px;
   }
+
   #zuo-header {
     width: 100%;
     height: 250px;
@@ -57,26 +57,30 @@
     background-repeat: repeat;
     background-color: #eaeced;
   }
-  .welcome-body{
+
+  .welcome-body {
     width: 790px;
     margin: 10px auto;
     text-align: center;
     padding-top: 30px;
     padding-bottom: 30px;
   }
+
   .welcome-body h1 {
     font-size: 24px;
     margin: 0;
     font-weight: 700;
     color: #272c2f;
   }
-  .subtip{
+
+  .subtip {
     margin-top: 15px;
     margin-bottom: 18px;
     font-size: 16px;
     color: #5d6c75;
   }
-  #new-zuoer-link{
+
+  #new-zuoer-link {
     height: 50px;
     border: none;
     width: 200px;
@@ -84,10 +88,12 @@
     background-color: #1fd7e2;
     color: #fff;
   }
-  #new-zuoer-link a{
+
+  #new-zuoer-link a {
     color: white;
   }
-  .close{
+
+  .close {
     position: absolute;
     display: block;
     width: 20px;
