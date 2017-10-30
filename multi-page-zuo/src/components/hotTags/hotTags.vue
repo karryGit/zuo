@@ -2,7 +2,9 @@
   <div>
     <section id="hot_container">
       <header class="side-title">热门标签</header>
-      <button class="btn" v-for="hotTag in hotTags">{{hotTag.content}}</button>
+      <button class="btn" v-for="hotTag in hotTags">
+        <a href="#">{{hotTag.content}}</a>
+      </button>
     </section>
 
   </div>
@@ -20,13 +22,13 @@
       }
     },
     mounted() {
-      var _this = this
+      var _this = this;
       axios.get('api/web_hot_tags').then(function (response) {
         var arr = response.data.hot_tags;
         for (var i = 0; i < arr.length; i++) {
           _this.hotTags.push(arr[i])
         }
-        console.log(_this.hotTags[0].content)
+
       })
     }
 
@@ -38,16 +40,26 @@
     width: 234px;
     position: relative;
   }
-  .side-title {
 
+  .side-title {
+    font-size: 16px;
+    font-weight: 500;
   }
 
   .btn {
     border: none;
     margin: 5px;
-    color: rgb(153, 155, 156);
     padding: 8px;
-    background-color: rgb(234, 236, 237);
+    background-color: #EAECED;
+  }
+
+  .btn a {
+    text-decoration: none;
+    color: #999b9c;
+  }
+
+  .btn a:hover {
+    color: #595a5b;;
   }
 
 </style>

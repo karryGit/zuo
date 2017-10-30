@@ -166,7 +166,6 @@
         for (var i = 0; i < this.headers.length; i++) {
           this.headers[i].active = '';
           this.headers[index].active = 'active';
-
         }
       },
       checkLogon() {
@@ -213,7 +212,7 @@
   }
 
   #container {
-    width: 95%;
+    width: 1200px;
     margin: 0 auto;
   }
 

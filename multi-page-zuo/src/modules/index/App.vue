@@ -5,6 +5,8 @@
     <div id="wrap" class="clear_float">
       <MyHeader id="left"></MyHeader>
       <MyHotTags id="right"></MyHotTags>
+      <MyAttention class="float-right"></MyAttention>
+      <MyHotPosts class="float-left"></MyHotPosts>
     </div>
   </div>
 </template>
@@ -14,6 +16,7 @@
   import MyHeader from '../../components/header/header';
   import MyHotTags from '../../components/hotTags/hotTags';
   import MyAttention from '../../components/Attention/Attention';
+  import MyHotPosts from '../../components/hotPosts/hotPosts';
 
   export default {
     name: 'index',
@@ -21,30 +24,47 @@
       MyIndex,
       MyNav,
       MyHeader,
-      MyHotTags
+      MyHotTags,
+      MyAttention,
+      MyHotPosts
     },
   }
 </script>
 
 <style scoped>
   @import "../../common/style/marx.min.css";
-#all{
-  width: 100%;
-  background-color: rgb(246, 246, 246);
-}
+  /*浮动左*/
+  .float-left {
+    float: left;
+  }
+
+  /*浮动右*/
+  .float-right {
+    float: right;
+  }
+
+  #all {
+    height: 4000px;
+    width: 100%;
+    background-color: rgb(246, 246, 246);
+  }
+
   #wrap {
-    width: 86%;
+    width: 1200px;
     margin: 0 auto;
   }
+
   #right {
     margin-top: 4.6%;
     margin-right: 15%;
-   float: right;
+    float: right;
   }
-  #left{
+
+  #left {
     float: left;
   }
-  .clear_float::after{
+
+  .clear_float::after {
     content: "";
     display: table;
     clear: both;
