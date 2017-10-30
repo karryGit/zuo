@@ -1,20 +1,19 @@
 <template>
-  <!--注册弹出页面-->
-  <div id="zuo-logon">
+  <!--登录弹出页面-->
+  <div  id="zuo-login">
     <div class="zuo-overlay">
       <!--登录header-->
       <div class="zuo-login-con-container">
         <div class="login-header">
           <img src="../../assets/zhuomoniao.png"/>
-          <span class="title-text">
-              <strong>ZUO</strong>&nbsp;&nbsp;
-              欢迎你的加入
+          <span class="title-text">欢迎回到&nbsp;&nbsp;
+              <strong>ZUO</strong>
             </span>
         </div>
         <!--登录内容-->
-        <div class="login-content1">
+        <div class="login-content">
           <div class="close" @click="close">
-            <a href="index.html"> <img src="../../assets/close.png"/></a>
+            <a href="index.html"><img src="../../assets/close.png"/></a>
           </div>
           <img class="weibo" src="../../assets/weibo.png"/>
           <img class="weixin" src="../../assets/weixin.png"/>
@@ -25,30 +24,28 @@
             <div class="hengxian2"></div>
           </div>
           <div class="zuo-send">
-            <input class="zuo-phone" v-model="username" type="text" placeholder="手机号">
-            <input class="zuo-captcha" v-model="test" type="text" placeholder="验证码">
-            <button class="send1">发送验证码</button>
-            <input class="password" v-model="password" type="password" placeholder="密码">
-            <input class="confirmPassword" v-model="affirmPass" type="password" placeholder="确认密码">
+            <input class="zuo-phone" type="text" placeholder="手机号">
+            <input class="zuo-captcha" type="text" placeholder="验证码">
+            <button class="send">发送验证码</button>
           </div>
-          <!--已有账号去登录-->
-          <div class="other-actions1">
-            <img @click="checkLogon" class="checked" :src="isSrc ? srcChecked:srcChecked1"/>
-            <span class="policy-tip">我已经认真阅读并同意<strong>ZUO</strong>的</span>
-            <a id="login-link">已有账号，登录</a>
-            <a class="agree" href="http://zuoooodesign.lofter.com/post/1d1a2c6b_6478482" target="_blank">《用户协议》</a>
+          <!--没有账号?去注册-->
+          <div class="other-actions">
+            <a class="sign-up-link">没有账号？去注册</a>
+            <a class="pass-login-link">
+              <img class="lock" src="../../assets/lock.png"/>
+              <span>手机密码登录</span>
+            </a>
           </div>
-          <button @click="loginIng" :class="isLogin ? login1 : login2" :disabled="isDisabled">注册</button>
+          <button class="zuo-login-btn">登录</button>
         </div>
       </div>
     </div>
   </div>
 </template>
-<script>
-  import axios from 'axios';
 
+<script>
   export default {
-    name: 'logon',
+    name: 'login',
     data() {
       return {
         isShow: false,
@@ -64,18 +61,10 @@
           {title: '首页', href: '#', active: 'active'},
           {title: '深度', href: '#', active: ''},
           {title: '下载APP', href: '#', active: ''}
-        ],
-        username: '',
-        test: '',
-        password: '',
-        affirmPass: ''
+        ]
       }
     },
     methods: {
-      close() {
-        this.isShow = false;
-        this.isLogon = false;
-      },
       login() {
         this.isShow = true;
       },
@@ -86,6 +75,7 @@
         for (var i = 0; i < this.headers.length; i++) {
           this.headers[i].active = '';
           this.headers[index].active = 'active';
+
         }
       },
       checkLogon() {
@@ -97,35 +87,11 @@
           this.isLogin = true;
           this.isDisabled = false;
         }
-      },
-      loginIng() {
-        if (this.username.length == 0) {
-          alert("手机号不能为空");
-          if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(this.username))) {
-            alert("不是完整的11位手机号或者正确的手机号前七位");
-            return false;//不提交
-          }
-        }
-        if (this.password == "") {
-          alert("密码不能为空");
-          return false;//不提交
-        }
-        if (this.password.indexOf(" ") != -1) {
-          alert("密码不能包含空格");
-          return false;//不提交
-        }
-        if (this.username.indexOf(" ") != -1) {
-          alert("手机号不能包含空格");
-          return false;//不提交
-        }
-        if (this.affirmPass != this.password) {
-          alert('两次密码输入不一致')
-        }
-
       }
     },
   }
 </script>
+
 <style scoped>
   @import "../../common/style/marx.min.css";
   /*浮动左*/
@@ -261,7 +227,7 @@
     right: 0;
     width: 100%;
     height: 100%;
-    z-index: 3000;
+    z-index: 3900;
     background-color: rgba(39, 44, 47, .9);
     background-image: linear-gradient(to top, rgba(39, 44, 47, .9), rgba(39, 44, 47, .5));
     overflow-y: auto;
@@ -525,7 +491,6 @@
     position: absolute;
     right: -6%;
     top: -17%;
-
   }
 
 </style>

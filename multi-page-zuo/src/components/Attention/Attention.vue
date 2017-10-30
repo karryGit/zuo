@@ -24,7 +24,7 @@
     <div class="download-wrap">
       <div class="download-ios clear_float" @mouseenter="packerEnter" @mouseleave="packerLeave">
         <div class="download-ios-left float-left">
-          <a href="">下载ios版 App</a>
+          <a href="downloadApp.html">下载ios版 App</a>
         </div>
         <div class="download-ios-img float-right">
           <img :src="packer"/>
