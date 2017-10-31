@@ -17,7 +17,6 @@
   import MyHotTags from '../../components/hotTags/hotTags';
   import MyAttention from '../../components/Attention/Attention';
   import MyHotPosts from '../../components/hotPosts/hotPosts';
-
   export default {
     name: 'index',
     components: {
@@ -26,7 +25,7 @@
       MyHeader,
       MyHotTags,
       MyAttention,
-      MyHotPosts
+      MyHotPosts,
     },
   }
 </script>
@@ -44,7 +43,6 @@
   }
 
   #all {
-    height: 4000px;
     width: 100%;
     background-color: rgb(246, 246, 246);
   }

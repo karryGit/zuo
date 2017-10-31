@@ -85,21 +85,128 @@
           </li>
         </ul>
       </div>
-      <div class="zanAll">
-        <div class="zan">
-          <span>
-                赞
-              </span>
-          <p class="animated-pop">
-          </p>
+      <!--评论部分-->
+      <main id="comment-container" v-for="(post,index) in posts">
+        <!--评论头部-->
+        <header class="comment-header">
+          <header class="comment-header-left clear_float">
+            <img class="comment-header-c" src="../../assets/hotPostsImg/c.png"/>
+            <div class="comment-header-left-img float-left">
+              <img :src="post.owner.avatar" alt="">
+            </div>
+            <div class="comment-header-left-text float-left">
+              <a href="#">{{post.owner.username}}</a>
+            </div>
+            <div class="comment-header-dot float-right">
+              <img src="../../assets/hotPostsImg/Dot.png"/>
+            </div>
+            <div class="comment-header-share float-right">
+              <img src="../../assets/hotPostsImg/share.png"/>
+            </div>
+            <span class="approve float-right">{{post.likeCount}}个赞同</span>
+            <div class="comment-header-right-round float-right">
+              <img src="../../assets/hotPostsImg/round.png"/>
+            </div>
+          </header>
+        </header>
+        <!--评论图片-->
+        <div class="comment-image-overlay">
+          <img :src="post.postImage.url" alt="">
+            <div  class="mask"></div>
+          <a href="" class="feed-halo" :style="{left:(post.haloCenterRatio.width_ratio*100)-10+'%'
+          ,top:(post.haloCenterRatio.height_ratio * 100)-10 + '%'}">
+            <div class="like-tip goods">
+              <span class="animated-pop"></span>
+                <div class="hide">
+                  <div class="like-tip-big">赞同</div>
+                  <div class="like-tip-small">这个态度</div>
+                </div>
+            </div>
+          </a>
         </div>
-      </div>
+        <!--底部评论-->
+        <div class="comment-content">
+          <div class="comment-footer">
+            {{post.postDescription}}
+          </div>
+          <div class="comment-footer-space">
+            <a href="" class="circle">
+              ●<span>&nbsp;空间</span>
+            </a>
+            <a href="">●
+              <span>
+                &nbsp;零售空间
+              </span>
+            </a>
+            <a href="">●
+              <span>&nbsp;Herman Miller</span>
+            </a>
+          </div>
+          <div class="more-info">
+            <div class="more-info-comment">
+              <img src="../../assets/hotPostsImg/info.png"/>
+              <span>{{post.commentedCount}}条评论</span>
+              <span>更多评论...</span>
+            </div>
+            <ul class="comment-list">
+              <li class="comment-item">
+                <div class="comment-item-name">
+                  <a href="">{{111}}</a>
+                  <span>-&nbsp;</span>
+                  <span>{{}}</span>
+                </div>
+                <div class="coment-item-time clear_float">
+                  <span class="coment-item-time-before">{{post.timeAgo}}</span>
+                  <span class="coment-item-time-reply">
+                   <a href="">回复</a>
+                     <span>点亮</span>
+                     <span><strong>{{post.comments[0].likeNumber}}</strong></span>
+                  <img src="../../assets/hotPostsImg/bulb.png"/>
+                 </span>
+                </div>
+              </li>
+              <li class="comment-item">
+                <div class="comment-item-name">
+                  <a href="">{{111}}</a>
+                  <span>-&nbsp;</span>
+                  <span>{{}}</span>
+                </div>
+                <div class="coment-item-time clear_float">
+                  <span class="coment-item-time-before">{{post.timeAgo}}</span>
+                  <span class="coment-item-time-reply">
+                   <a href="">回复</a>
+                     <span>点亮</span>
+                     <span><strong>{{post.comments[0].likeNumber}}</strong></span>
+                  <img src="../../assets/hotPostsImg/bulb.png"/>
+                 </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!--写下你的评论-->
+          <div class="add-comment">
+            <div class="add-body">
+              <div class="input-wrap">
+                  <textarea placeholder="写下你的评论..." class="comment-text"
+                            style="margin-top: 0px; margin-bottom: 0px; height: 100px;">
+
+                  </textarea>
+              </div>
+              <div class="add-comment-actions clear_float">
+                <a href="" class="cancel-new-comment float-left">取消</a>
+                <a href="" class="post-new-comment float-right">评论</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     </section>
   </div>
 </template>
 
 <script>
   import axios from 'axios';
+
 
   export default {
     name: 'hotPosts',
@@ -110,6 +217,7 @@
         goodImg: require('../../assets/hotPostsImg/check-box.png'),
         badImg: require('../../assets/hotPostsImg/check-box (1).png'),
         posts: [],
+        arrayJson: [],
         isShow: false
       }
     },
@@ -131,7 +239,6 @@
           this.badImg = require('../../assets/hotPostsImg/check-box (1).png');
           this.tr = 0;
         }
-
       },
       jiaoClick() {
         this.isShow = !this.isShow;
@@ -139,12 +246,16 @@
     },
     mounted() {
       var _this = this;
-      axios.get('api/web_hot_posts').then(function (response) {
+      axios.get('http://oynvlnf3a.bkt.clouddn.com/file/api/web_hot_posts.json').then(function (response) {
         let array = response.data.posts;
         for (var i = 0; i < array.length; i++) {
           _this.posts.push(array[i])
         }
-        console.log(response.data.posts)
+        for (var i = 0; i <array.length ; i++) {
+          console.log(array[i].comments[i])
+              console.log(array[i].comments[0].text)
+        }
+        _this.arrayJson = [];
       }).catch(function (err) {
         console.log(err);
       })
@@ -153,6 +264,7 @@
 </script>
 
 <style scoped>
+  @import '../../../node_modules/vue2-animate/dist/vue2-animate.min.css';
   /*浮动左*/
   .float-left {
     float: left;
@@ -265,7 +377,8 @@
   }
 
   .dropdown-menu {
-    height: 704px;
+    border: 3px solid #ececec;
+    height: 708px;
     width: 100px;
     background-color: white;
     position: relative;
@@ -331,13 +444,150 @@
     margin-right: 10px;
   }
 
-  .zanAll{
+  #comment-container {
+    width: 600px;
+    margin: 15px 0;
+    border-radius: 5px;
     position: relative;
+    background-color: #fff;
+    z-index: 450;
   }
-  .zan {
+
+  .comment-header {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 100%;
+    height: 45px;
+  }
+
+  .comment-header-left {
+    position: relative;
+    top: 5px;
+  }
+
+  .comment-header-c {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  .comment-header-left-img {
     width: 50px;
     height: 50px;
   }
+
+  .comment-header-left-img img {
+    border-radius: 50%;
+  }
+
+  .comment-header-left-text {
+    margin-left: 10px;
+    margin-top: 12px;
+  }
+
+  .comment-header-dot {
+    margin-top: 10px;
+    margin-right: 15px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .comment-header-share {
+    width: 22px;
+    height: 22px;
+    margin-right: 15px;
+    margin-top: 10px;
+  }
+
+  .approve {
+    margin-top: 10px;
+    margin-right: 20px;
+    color: #9B9C9D;
+  }
+
+  .comment-header-right-round {
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .comment-image-overlay {
+    margin-bottom: -20%;
+    position: relative;
+    margin-left: -17px;
+    width: 600px;
+  }
+  .comment-image-overlay:hover .hide{
+    display: block;
+    opacity: 1;
+  }
+  .comment-image-overlay:hover .mask{
+
+    display: block;
+    opacity: 1;
+  }
+  .comment-image-overlay:hover .goods{
+    border: 4px solid #1fd7e2;
+  }
+
+  .feed-halo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: white;
+  }
+  .hide{
+    transition:all 1s;
+    opacity: 0;
+  }
+
+  .mask {
+    opacity: 0;
+    transition: all 1s;
+    position: absolute;
+    height: 99%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .4);
+  }
+
+  .like-tip {
+    z-index: 1000;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .goods {
+    width: 130px;
+    height: 130px;
+    border: 2px solid #1fd7e2;
+    border-radius: 50%;
+    background-color: rgba(31, 217, 255, .2);
+  }
+
+  .like-tip-big {
+    position: absolute;
+    left: 17%;
+    top: 20px;
+    font-size: 38px;
+  }
+
+  .like-tip-small {
+    position: absolute;
+    left: 18%;
+    top: 70px;
+    font-size: 20px;
+  }
+
   .animated-pop {
     border: 1px solid #1fd7e2;
     border-radius: 50%;
@@ -349,11 +599,11 @@
     left: 0;
     bottom: 0;
     right: 0;
-    transition: all 1s;
     animation: animatepop 1s infinite
   }
 
   @keyframes animatepop {
+
     0% {
       transform: scale(1);
       opacity: 1;
@@ -363,15 +613,166 @@
       opacity: 0;
     }
   }
-  .zan span{
-    line-height: 50px;
-    margin-left: 15px;
-    color: transparent;
+
+  .comment-content {
+    margin-top: 120px
   }
-  .zan :hover{
-   line-height: 50px;
-    margin-left: 15px;
+
+  .comment-footer {
+    line-height: 22px;
+    padding: 0 25px 18px;
+    color: #595c5d;
+  }
+
+  .comment-footer-space .circle {
+    color: #00B8E9;
+  }
+
+  .comment-footer-space {
+    margin-left: 25px;
+    width: 520px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ECECEC;
+  }
+
+  .comment-footer-space span {
+    color: #A6A7A7;
+  }
+
+  .comment-footer-space a {
+    color: #A6A7A7;
+    margin-left: 5px;
+    text-decoration: none;
+  }
+
+  .comment-footer-space span:hover {
     color: black;
+  }
+
+  .more-info {
+    margin-left: 25px;
+    width: 520px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ECECEC;
+  }
+
+  .more-info-comment img {
+    vertical-align: middle;
+    margin-left: 25px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .more-info-comment span {
+    margin-left: 5px;
+    height: 100%;
+    vertical-align: middle;
+    line-height: 30px;
+    color: #A2A3A3;
+  }
+
+  .more-info-comment {
+    margin-top: 10px;
+    margin-left: -20px;
+    margin-bottom: 20px;
+  }
+
+  .comment-list li {
+    margin-left: -15px;
+    list-style: none;
+  }
+
+  .comment-item {
+    padding-left: 5px;
+    margin-top: -5px;
+    line-height: 30px;
+    margin-left: 20px;
+    height: 70px;
+    width: 500px;
+  }
+
+  .comment-list {
+    padding-left: 0;
+  }
+
+  .comment-item-name {
+    margin-left: 15px;
+  }
+
+  .coment-item-time {
+    margin-left: 18px;
+  }
+
+  .comment-list li:hover {
+    border-radius: 5px;
+    width: 520px;
+    height: 70px;
+    background-color: rgb(247, 247, 247);
+  }
+
+  .comment-item-name a {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .comment-item-name span {
+    font-size: 15px;
+  }
+
+  .coment-item-time span {
+    color: #C9C9C9;
+  }
+
+  .coment-item-time {
+    display: inline-block;
+  }
+
+  .coment-item-time-before {
+    font-size: 14px;
+  }
+
+  .coment-item-time-reply {
+    margin-left: 310px;
+  }
+
+  .coment-item-time-reply span {
+    color: #A1A2A3;
+    margin-left: 5px;
+    line-height: 30px;
+    height: 100%;
+    vertical-align: middle;
+    font-size: 14px;
+  }
+
+  .coment-item-time-reply a {
+    color: #A1A2A3;
+    line-height: 35px;
+    font-size: 14px;
+  }
+
+  .coment-item-time-reply img {
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+  }
+
+  .add-comment {
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+
+  .comment-text {
+    outline: none;
+    border: none;
+    width: 520px;
+    height: 100px;
+    resize: vertical;
+  }
+
+  .add-comment-actions {
+    margin-left: 10px;
+    width: 500px;
+    height: 30px;
   }
 
 

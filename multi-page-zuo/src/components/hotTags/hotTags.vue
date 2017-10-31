@@ -23,7 +23,7 @@
     },
     mounted() {
       var _this = this;
-      axios.get('api/web_hot_tags').then(function (response) {
+      axios.get('http://oynvlnf3a.bkt.clouddn.com/file/api/web_hot_tags.json').then(function (response) {
         var arr = response.data.hot_tags;
         for (var i = 0; i < arr.length; i++) {
           _this.hotTags.push(arr[i])

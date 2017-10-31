@@ -146,7 +146,7 @@
         isDisabled: false,
         headers: [
           {title: '首页', href: 'index.html', active: 'active'},
-          {title: '深度', href: '#', active: ''},
+          {title: '深度', href: 'depth.html', active: ''},
           {title: '下载APP', href: 'downloadApp.html', active: ''}
         ]
       }

@@ -10,8 +10,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "animated": "^0.2.0",
     "axios": "^0.17.0",
-    "vue": "^2.5.2"
+    "vue": "^2.5.2",
+    "vue2-animate": "^1.0.4"
   },
   "devDependencies": {
     "glob": "^7.1.1",

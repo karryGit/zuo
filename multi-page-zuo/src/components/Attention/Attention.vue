@@ -80,7 +80,7 @@
     },
     mounted() {
       var _this = this;
-      axios.get('api/web_reco_users').then(function (response) {
+      axios.get('http://oynvlnf3a.bkt.clouddn.com/file/api/web_reco_users.json').then(function (response) {
         var array = response.data.reco_users;
         for (var i = 0; i < array.length; i++) {
           _this.recoUsers.push(array[i])
