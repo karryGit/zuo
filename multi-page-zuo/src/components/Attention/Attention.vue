@@ -34,7 +34,7 @@
     <div class="download-weixin-wrap">
       <div class="download-ios clear_float" @mouseenter="packerEnter1" @mouseleave="packerLeave1">
         <div class="download-ios-left float-left">
-          <a href="">关注微信公众号</a>
+          <a href="downloadWechat.html">关注微信公众号</a>
         </div>
         <div class="download-ios-img float-right">
           <img :src="weixin"/>
@@ -80,7 +80,7 @@
     },
     mounted() {
       var _this = this;
-      axios.get('http://oynvlnf3a.bkt.clouddn.com/file/api/web_reco_users.json').then(function (response) {
+      axios.get('api/web_reco_users').then(function (response) {
         var array = response.data.reco_users;
         for (var i = 0; i < array.length; i++) {
           _this.recoUsers.push(array[i])

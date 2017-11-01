@@ -55,7 +55,7 @@
     },
     mounted() {
       var _that = this;
-      axios.get('http://oynvlnf3a.bkt.clouddn.com/file/api/topics.json').then(function (response) {
+      axios.get('api/topics').then(function (response) {
         _that.imgSrc = response.data.topic.cover;
         _that.topicTitle = response.data.topic.title;
         _that.collectCount = response.data.topic.collect_count;

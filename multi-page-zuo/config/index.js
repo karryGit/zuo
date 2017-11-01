@@ -30,14 +30,14 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      // '/api':{
-      //     target:'http://oynvlnf3a.bkt.clouddn.com/file',
-      //   pathRewrite:{
-      //       '^api':'/api'
-      //   },
-        // headers:{
-        //   Host:'www.oynvlnf3a.bkt.clouddn.com'
-        // }
+      '/api': {
+        target: 'http://www.zuodesign.cn',
+        pathRewrite: {
+          '^api': '/api'
+        },
+        headers: {
+          Host: 'www.zuodesign.cn'
+        }
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
@@ -46,5 +46,5 @@ module.exports = {
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
     cssSourceMap: false
-
+  }
 }

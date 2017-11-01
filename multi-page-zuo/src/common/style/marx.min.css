@@ -10,11 +10,9 @@ button, hr {
 h1, h2 {
   margin: 20px 0 16px
 }
-
 pre, textarea {
   overflow: auto
 }
-
 a, a:focus, a:hover {
   color: #000000;
 }
@@ -249,7 +247,7 @@ small {
 }
 
 article, aside, details, footer, header, main, section, summary {
-  margin: 0 auto 16px;
+  margin: 0 auto 0;
   width: 100%
 }
 

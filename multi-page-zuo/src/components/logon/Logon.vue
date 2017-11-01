@@ -1,7 +1,7 @@
 <template>
   <!--注册弹出页面-->
   <div id="zuo-logon">
-    <div class="zuo-overlay">
+    <div class="zuo-overlay" @click="maskClick">
       <!--登录header-->
       <div class="zuo-login-con-container">
         <div class="login-header">
@@ -13,7 +13,7 @@
         </div>
         <!--登录内容-->
         <div class="login-content1">
-          <div class="close" @click="close">
+          <div class="close">
             <a href="index.html"> <img src="../../assets/close.png"/></a>
           </div>
           <img class="weibo" src="../../assets/weibo.png"/>
@@ -25,17 +25,25 @@
             <div class="hengxian2"></div>
           </div>
           <div class="zuo-send">
-            <input class="zuo-phone" v-model="username" type="text" placeholder="手机号">
-            <input class="zuo-captcha" v-model="test" type="text" placeholder="验证码">
-            <button class="send1">发送验证码</button>
-            <input class="password" v-model="password" type="password" placeholder="密码">
-            <input class="confirmPassword" v-model="affirmPass" type="password" placeholder="确认密码">
+            <img v-show="isFill" class="fillWrite" :src="fillWriteSrc"/>
+            <input @focus="phoneFocus" :style="{border:isBorder}" class="zuo-phone" v-model="username" type="text"
+                   placeholder="手机号">
+            <img v-show="isTestShow" class="fillWrite1" src="../../assets/images/请填写验证码.png"/>
+            <input class="zuo-captcha" :style="{border:isBorder1}" @focus="testCodeFocus" v-model="testCodeValue"
+                   type="text" placeholder="验证码">
+            <button class="send1" @click="sendClick">发送验证码</button>
+            <img v-show="isPassShow" class="pass" src="../../assets/images/密码长度不小于6.png"/>
+            <input @focus="passFocus" :style="{border:isBorder2}" class="password" v-model="password" type="password"
+                   placeholder="密码">
+            <img v-show="isNewPassShow" class="confirm" src="../../assets/images/两次密码不一致.png"/>
+            <input :style="{border:isBorder3}" @focus="repassFocus" class="confirmPassword" v-model="affirmPass"
+                   type="password" placeholder="确认密码">
           </div>
           <!--已有账号去登录-->
           <div class="other-actions1">
             <img @click="checkLogon" class="checked" :src="isSrc ? srcChecked:srcChecked1"/>
             <span class="policy-tip">我已经认真阅读并同意<strong>ZUO</strong>的</span>
-            <a id="login-link">已有账号，登录</a>
+            <a id="login-link" href="login.html">已有账号，登录</a>
             <a class="agree" href="http://zuoooodesign.lofter.com/post/1d1a2c6b_6478482" target="_blank">《用户协议》</a>
           </div>
           <button @click="loginIng" :class="isLogin ? login1 : login2" :disabled="isDisabled">注册</button>
@@ -51,8 +59,6 @@
     name: 'logon',
     data() {
       return {
-        isShow: false,
-        isLogon: true,
         srcChecked: require('../../assets/icon_home_checkbox.png'),
         srcChecked1: require('../../assets/icon_home_checkbox (1).png'),
         isSrc: true,
@@ -60,34 +66,22 @@
         login1: 'zuo-login-btn1',
         login2: 'zuo-login-btn2',
         isDisabled: false,
-        headers: [
-          {title: '首页', href: '#', active: 'active'},
-          {title: '深度', href: '#', active: ''},
-          {title: '下载APP', href: '#', active: ''}
-        ],
         username: '',
-        test: '',
+        testCodeValue: '',
         password: '',
-        affirmPass: ''
+        affirmPass: '',
+        isFill: false,
+        fillWriteSrc: require('../../assets/images/请填写手机号.png'),
+        isBorder: '',
+        isBorder1: '',
+        isBorder2: '',
+        isBorder3: '',
+        isTestShow: false,
+        isPassShow: false,
+        isNewPassShow: false
       }
     },
     methods: {
-      close() {
-        this.isShow = false;
-        this.isLogon = false;
-      },
-      login() {
-        this.isShow = true;
-      },
-      logon() {
-        this.isLogon = true;
-      },
-      table(index) {
-        for (var i = 0; i < this.headers.length; i++) {
-          this.headers[i].active = '';
-          this.headers[index].active = 'active';
-        }
-      },
       checkLogon() {
         this.isSrc = !this.isSrc
         if (this.isSrc == false) {
@@ -99,29 +93,74 @@
         }
       },
       loginIng() {
+        //判断账号是否为空
         if (this.username.length == 0) {
-          alert("手机号不能为空");
-          if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(this.username))) {
-            alert("不是完整的11位手机号或者正确的手机号前七位");
-            return false;//不提交
-          }
+          this.isFill = true;
+          this.isBorder = '1px solid red';
+          return;//不提交
         }
-        if (this.password == "") {
-          alert("密码不能为空");
-          return false;//不提交
+        //判断是否是一个手机号
+        let re = /^1[34578][0-9]{9}$/g;//不加0的
+        if (!re.test(this.username)) {
+          this.isBorder = '1px solid red';
+          this.isFill = true;
+          this.fillWriteSrc = require('../../assets/images/手机号码格式不正确.png');
+          return;//不提交
         }
-        if (this.password.indexOf(" ") != -1) {
-          alert("密码不能包含空格");
-          return false;//不提交
+        //判断验证码是否为空
+        if (this.testCodeValue.length == 0) {
+          this.isBorder1 = '1px solid red';
+          this.isTestShow = true;
+          return;
         }
-        if (this.username.indexOf(" ") != -1) {
-          alert("手机号不能包含空格");
-          return false;//不提交
+        //判断新密码是否为空并且长度不小于6
+        if (this.password.length < 6) {
+          this.isBorder2 = '1px solid red';
+          this.isPassShow = true;
+          return
         }
-        if (this.affirmPass != this.password) {
-          alert('两次密码输入不一致')
+        //判断新密码和确认密码是否一致
+        if (this.password !== this.affirmPass) {
+          this.isBorder3 = '1px solid red';
+          this.isNewPassShow = true;
+          return
         }
 
+      },
+      phoneFocus() {
+        this.isBorder = '';
+        this.isFill = false;
+      },
+      testCodeFocus() {
+        this.isBorder1 = '';
+        this.isTestShow = false;
+      },
+      passFocus() {
+        this.isBorder2 = '';
+        this.isPassShow = false;
+      },
+      repassFocus() {
+        this.isBorder3 = '';
+        this.isNewPassShow = false;
+      },
+      sendClick() {
+        //判断账号是否为空
+        if (this.username.length == 0) {
+          this.isFill = true;
+          this.isBorder = '1px solid red';
+          return;//不提交
+        }
+        //判断是否是一个手机号
+        let re = /^1[34578][0-9]{9}$/g;//不加0的
+        if (!re.test(this.username)) {
+          this.isBorder = '1px solid red';
+          this.isFill = true;
+          this.fillWriteSrc = require('../../assets/images/手机号码格式不正确.png');
+          return;//不提交
+        }
+      },
+      maskClick() {
+        window.location.href = 'index.html';
       }
     },
   }
@@ -145,114 +184,7 @@
     clear: both;
   }
 
-  #zuo-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 3000;
-    width: 100%;
-    height: 60px;
-    background-color: rgb(39, 44, 47);
-  }
-
-  #container {
-    width: 95%;
-    margin: 0 auto;
-  }
-
-  .zuo-nav-left {
-    width: 30%;
-  }
-
-  .zuo-nav-right {
-    width: 70%;
-  }
-
-  .zuo-nav-right ul li {
-    line-height: 60px;
-    float: left;
-    list-style: none;
-    margin-left: 26px;
-
-  }
-
-  .zuo-nav-right ul li a {
-    color: rgb(127, 127, 127);
-    font-size: 14px;
-    text-decoration: none;
-  }
-
-  .zuo-nav-right ul li .active {
-    color: white;
-  }
-
-  .zuo-nav-left a {
-    line-height: 60px;
-    color: white;
-    text-decoration: none;
-  }
-
-  .zuo-nav-right-centre {
-    position: relative;
-    margin-left: 40px;
-    line-height: 60px;
-  }
-
-  .zuo-nav-right-centre_search {
-    font-size: 12px;
-    background-color: rgb(75, 80, 82);
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    width: 240px;
-    padding-left: 10px;
-    height: 36px;
-  }
-
-  .logo {
-    font-weight: 800;
-    font-size: 20px;
-  }
-
-  .logo_span {
-    margin-left: 5px;
-    font-size: 10px;
-    color: rgba(255, 255, 255, .3);
-    width: 100px;
-  }
-
-  .zuo-nav-right-left {
-    padding-left: 43px;
-  }
-
-  .zuo-nav-right-centre-img {
-    position: absolute;
-    left: 86%;
-    top: 36%;
-    width: 20px;
-    height: 20px;
-  }
-
-  .zuo-nav-right-right-login {
-    width: 40px;
-    height: 60px;
-    position: relative;
-  }
-
-  .zuo-nav-right-right img {
-    position: absolute;
-    left: -25px;
-    top: 18px;
-    width: 25px;
-    height: 25px;
-  }
-
-  .zuo-nav-right-right-ul span {
-    font-size: 13px;
-    color: rgb(151, 160, 165);
-  }
-
-  /*登录弹出部分*/
+  /*注册弹出部分*/
   .zuo-overlay {
     position: fixed;
     top: 0;
@@ -372,6 +304,30 @@
     position: relative;
     left: 5%;
     top: 30%;
+  }
+
+  .fillWrite {
+    position: absolute;
+    right: -185px;
+    top: 3%;
+  }
+
+  .fillWrite1 {
+    position: absolute;
+    right: -185px;
+    top: 30%;
+  }
+
+  .pass {
+    position: absolute;
+    right: -185px;
+    top: 55%;
+  }
+
+  .confirm {
+    position: absolute;
+    right: -185px;
+    top: 85%;
   }
 
   .zuo-phone {
@@ -512,13 +468,6 @@
     height: 45px;
   }
 
-  .lock {
-    position: absolute;
-    right: 104%;
-    width: 20px;
-    height: 20px;
-  }
-
   .close {
     width: 18px;
     height: 18px;
@@ -527,5 +476,4 @@
     top: -17%;
 
   }
-
 </style>

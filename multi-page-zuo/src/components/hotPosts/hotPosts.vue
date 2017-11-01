@@ -151,12 +151,12 @@
             <ul class="comment-list">
               <li class="comment-item">
                 <div class="comment-item-name">
-                  <a href="">{{111}}</a>
+                  <a href="">{{post.comments[0].author.username}}</a>
                   <span>-&nbsp;</span>
-                  <span>{{}}</span>
+                  <span v-html="post.comments[0].text"></span>
                 </div>
                 <div class="coment-item-time clear_float">
-                  <span class="coment-item-time-before">{{post.timeAgo}}</span>
+                  <span class="coment-item-time-before">{{post.comments[0].timeAgo}}</span>
                   <span class="coment-item-time-reply">
                    <a href="">回复</a>
                      <span>点亮</span>
@@ -165,18 +165,18 @@
                  </span>
                 </div>
               </li>
-              <li class="comment-item">
-                <div class="comment-item-name">
-                  <a href="">{{111}}</a>
+              <li class="comment-item" v-if="post.comments.length== 2">
+                <div class="comment-item-name" v-html="post.comments[1].author.username">
+                  <!--<a href="" v-html=""></a>-->
                   <span>-&nbsp;</span>
-                  <span>{{}}</span>
+                  <span v-html="post.comments[1].text">{{post.comments[1].text}}</span>
                 </div>
                 <div class="coment-item-time clear_float">
-                  <span class="coment-item-time-before">{{post.timeAgo}}</span>
+                  <span class="coment-item-time-before">{{post.comments[1].timeAgo}}</span>
                   <span class="coment-item-time-reply">
                    <a href="">回复</a>
                      <span>点亮</span>
-                     <span><strong>{{post.comments[0].likeNumber}}</strong></span>
+                     <span><strong>{{post.comments[1].likeNumber}}</strong></span>
                   <img src="../../assets/hotPostsImg/bulb.png"/>
                  </span>
                 </div>
@@ -193,7 +193,7 @@
                   </textarea>
               </div>
               <div class="add-comment-actions clear_float">
-                <a href="" class="cancel-new-comment float-left">取消</a>
+                <a href="" class="cancel-new-comment float-left" @click="cancelClick">取消</a>
                 <a href="" class="post-new-comment float-right">评论</a>
               </div>
             </div>
@@ -242,20 +242,21 @@
       },
       jiaoClick() {
         this.isShow = !this.isShow;
+      },
+      cancelClick(){
+
       }
     },
     mounted() {
       var _this = this;
-      axios.get('http://oynvlnf3a.bkt.clouddn.com/file/api/web_hot_posts.json').then(function (response) {
+      axios.get('api/web_hot_posts').then(function (response) {
+        console.log(response)
         let array = response.data.posts;
         for (var i = 0; i < array.length; i++) {
-          _this.posts.push(array[i])
+          _this.posts.push(array[i]);
+          _this.arrayJson.push(array[i].comments);
+          console.log(array[i].comments);
         }
-        for (var i = 0; i <array.length ; i++) {
-          console.log(array[i].comments[i])
-              console.log(array[i].comments[0].text)
-        }
-        _this.arrayJson = [];
       }).catch(function (err) {
         console.log(err);
       })
@@ -521,12 +522,10 @@
     width: 600px;
   }
   .comment-image-overlay:hover .hide{
-    display: block;
     opacity: 1;
   }
   .comment-image-overlay:hover .mask{
 
-    display: block;
     opacity: 1;
   }
   .comment-image-overlay:hover .goods{
@@ -711,11 +710,13 @@
   }
 
   .comment-item-name a {
+
     font-size: 15px;
     font-weight: 500;
   }
 
   .comment-item-name span {
+
     font-size: 15px;
   }
 
@@ -732,7 +733,7 @@
   }
 
   .coment-item-time-reply {
-    margin-left: 310px;
+    margin-left: 300px;
   }
 
   .coment-item-time-reply span {

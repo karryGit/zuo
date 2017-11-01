@@ -4,36 +4,39 @@
       <!--推荐阅读-->
       <div class="depth-body">
         <h3 class="read">推荐阅读</h3>
-        <div class="imgWrap">
-          <img src="../../assets/pic2.jpg"/>
+        <div class="imgWrap" v-for="(rticle,index) in rticles">
+          <div class="maskTwo">
+          </div>
+          <img :src="rticle.banner"/>
           <div class="textWrap">
             <div class="img-one">
-              拒绝性冷淡 | 从韦斯●安德森的电影里得到的家居配色灵感
+              {{rticle.title}}
             </div>
-            <p class="text-one">如果你也受够了黑白灰的MUJI风.</p>
+            <p class="text-one">{{rticle.summary}}</p>
           </div>
           <div class="hengxian"></div>
           <div class="text-footer clear_float">
             <a href="" class="kind">
-              <span>●</span>
-              <span>&nbsp;视觉</span>
+              <span :style="{color:rticle.sceneTagColor}">●</span>
+              <span>&nbsp;{{rticle.sceneTagName}}</span>
             </a>
-            <a href="" class="dateline"><span>06月23日18:44</span></a>
+            <a href="" class="dateline"><span>{{rticle.timeAgo}}</span></a>
           </div>
         </div>
       </div>
       <!--更多文章-->
       <div class="more-body">
         <h3 class="more">更多文章</h3>
-        <div class="more-content">
+        <div class="more-content" v-for="rticled in rticledArr">
+          <div class="white"></div>
           <!--图片-->
           <div class="img-two">
-            <img src="../../assets/pic2.jpg"/>
+            <img :src="rticled.banner"/>
           </div>
           <!--文本内容-->
           <div class="text-two">
             <a href="">
-              <span>这个感性的双鱼座国家,不只有最画风清奇的球迷,还有这四个划时代好物</span>
+              <span>{{rticled.title}}</span>
             </a>
           </div>
           <!--底部时间部分-->
@@ -45,26 +48,48 @@
             </div>
             <div class="title-time float-right">
               <a href="">
-                <span>07月30日23:56</span>
+                <span>{{rticled.timeAgo}}</span>
               </a>
             </div>
           </div>
-
         </div>
       </div>
-
     </header>
   </div>
 </template>
 <script>
+  import axios from 'axios';
+
   export default {
-    name: 'depth'
+    name: 'depth',
+    data() {
+      return {
+        rticles: [],
+        rticledArr: []
+      }
+    },
+    mounted() {
+      var _that = this;
+      axios.get('api/hot_articles').then(function (response) {
+        for (let i = 0; i < response.data.hot_articles.length; i++) {
+          _that.rticles.push(response.data.hot_articles[i]);
+        }
+      });
+      axios.get('api/articles').then(function (res) {
+        for (let i = 0; i < res.data.articles.length; i++) {
+          _that.rticledArr.push(res.data.articles[i])
+
+        }
+        console.log(_that.rticledArr)
+      })
+    }
   }
 
 </script>
 
 <style scoped>
   @import "../../common/style/marx.min.css";
+
   /*浮动左*/
   .float-left {
     float: left;
@@ -81,49 +106,63 @@
     display: table;
     clear: both;
   }
-  .footer-time-wrap{
+
+  .footer-time-wrap {
+    z-index: 1;
     width: 190px;
     position: relative;
     left: 0;
     top: 91%;
     height: 40px;
   }
-  .title-time a{
+
+  .title-time a {
     font-size: 14px;
     text-decoration: none;
     color: #A4ABB0;
   }
-  .title-name a{
+
+  .title-name a {
     text-decoration: none;
     color: #262721;
-   font-weight: 200;
+    font-weight: 200;
   }
-  .text-two{
+
+  .text-two {
+    z-index: 2;
     font-size: 15px;
     width: 190px;
     position: absolute;
-    bottom: 25%;
+    bottom: 20%;
     text-align: left;
   }
-  .text-two a{
+
+  .text-two a {
     text-decoration: none;
     color: #3A230C;
     font-weight: 200;
   }
 
   #depth-container {
-    margin-top: 70px;
+    background-color: #F6F6F6;
+    margin-top: 60px;
     width: 100%;
+    height: 150%;
   }
 
   .depth-body {
     width: 960px;
-    margin: 0 auto;
+    margin: 30px auto;
+  }
+  .depth-body h3{
+    padding-top: 30px;
   }
 
   .more-body {
     width: 960px;
-    margin: 20px auto;
+    height: 1200px;
+    margin: 0 auto;
+    padding-bottom: 60px;
   }
 
   .more {
@@ -137,9 +176,12 @@
   }
 
   .more-content {
+    box-shadow:4px 4px 10px #b7b7b7;;
+    margin-top: 10px;
+    margin-left: 10px;
     border-radius: 5px;
     position: relative;
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -148,28 +190,57 @@
   }
 
   .img-two {
+    object-fit: cover;
     position: absolute;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+  }
+  .white{
+    z-index: 1;
+    background-color: white;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     width: 100%;
     height: 50%;
-    background-color: #b3d4fc;
+    position: absolute;
+    bottom: 0;
   }
-  .img-two img{
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+
+  .img-two img {
+    border-radius: 6px;
     width: 100%;
     height: 100%;
   }
 
   .imgWrap {
+    display: inline-flex;
     position: relative;
-    display: flex;
+    margin-left: 10px;
     flex-direction: row;
     justify-content: space-around;
     border-radius: 5px;
     width: 300px;
     height: 450px;
+  }
+
+  .imgWrap:hover .maskTwo {
+    opacity: 1;
+  }
+
+  .maskTwo {
+    border-radius: 5px;
+    opacity: 0;
+    transition: all 1s;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 1000;
   }
 
   .imgWrap img {
@@ -189,7 +260,7 @@
   .textWrap {
     text-align: left;
     position: absolute;
-    bottom: 25%;
+    bottom: 20%;
   }
 
   .text-one {
@@ -217,10 +288,6 @@
 
   .kind {
     float: left;
-  }
-
-  .kind span:nth-child(1) {
-    color: yellow;
   }
 
   .kind span:nth-child(2) {

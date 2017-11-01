@@ -1,9 +1,9 @@
 <template>
   <!--登录弹出页面-->
-  <div  id="zuo-login">
-    <div class="zuo-overlay">
+  <div id="zuo-login">
+    <div class="zuo-overlay" @click="maskClick">
       <!--登录header-->
-      <div class="zuo-login-con-container">
+      <div class="zuo-login-con-container" v-show="isLoginShow">
         <div class="login-header">
           <img src="../../assets/zhuomoniao.png"/>
           <span class="title-text">欢迎回到&nbsp;&nbsp;
@@ -12,7 +12,7 @@
         </div>
         <!--登录内容-->
         <div class="login-content">
-          <div class="close" @click="close">
+          <div class="close">
             <a href="index.html"><img src="../../assets/close.png"/></a>
           </div>
           <img class="weibo" src="../../assets/weibo.png"/>
@@ -24,19 +24,67 @@
             <div class="hengxian2"></div>
           </div>
           <div class="zuo-send">
-            <input class="zuo-phone" type="text" placeholder="手机号">
-            <input class="zuo-captcha" type="text" placeholder="验证码">
-            <button class="send">发送验证码</button>
+            <img v-show="isFill" class="fillWrite" :src="fillWriteSrc"/>
+            <input class="zuo-phone" @focus="phoneFocus" :style="{border:isBorder}" v-model="phoneValue" type="text"
+                   placeholder="手机号">
+            <img v-show="isTestShow" class="fillWrite3" src="../../assets/images/请填写验证码.png"/>
+            <input @focus="testCodeFocus" class="zuo-captcha" type="text" v-model="testCodeValue"
+                   :placeholder="testCode" :style="{border:isBorder1}">
+            <button v-show="isLogin" @click="sendClick" class="send">发送验证码</button>
           </div>
           <!--没有账号?去注册-->
           <div class="other-actions">
-            <a class="sign-up-link">没有账号？去注册</a>
-            <a class="pass-login-link">
+            <a class="sign-up-link" @click="forgetClick">{{forget}}</a>
+            <a class="pass-login-link" v-show="isLock" @click="lockClick">
               <img class="lock" src="../../assets/lock.png"/>
               <span>手机密码登录</span>
             </a>
+            <a class="pass-login-link" v-show="isPhone" @click="lockClick">
+              <img class="lock" src="../../assets/images/手机.png"/>
+              <span>手机验证码登录</span>
+            </a>
           </div>
-          <button class="zuo-login-btn">登录</button>
+          <button class="zuo-login-btn" @click="checkLogin">登录</button>
+        </div>
+      </div>
+      <!--忘记密码部分-->
+      <div class="auth-box" v-show="isForgetPassWord">
+        <div class="closeForget">
+          <a href="index.html"><img src="../../assets/close.png"/></a>
+        </div>
+        <div class="auth-box-body">
+          <header class="box-title">忘记密码</header>
+          <div class="form-wrap">
+            <div class="form-body">
+              <div class="zuo-form">
+                <div class="zuo-control-group">
+                  <img v-show="isFill" class="fillWrite1" :src="fillWriteSrc"/>
+                  <input type="text" name="phone" @focus="phoneFocus" :style="{border:isBorder}" v-model="phoneValue"
+                         placeholder="手机号" class="zuo-control">
+                </div>
+                <div class="zuo-control-group">
+                  <img v-show="isTestShow" class="fillWrite2" src="../../assets/images/请填写验证码.png"/>
+                  <input id="code" type="text" name="code" @focus="testCodeFocus" v-model="testCodeValue"
+                         placeholder="验证码" class="zuo-control" :style="{border:isBorder1}">
+                  <button id="zuo-get-code" class="zuo-btn zuo-btn-theme">发送验证码</button>
+                </div>
+                <div class="zuo-control-group">
+                  <img v-show="isPassShow" class="pass" src="../../assets/images/密码长度不小于6.png"/>
+                  <input type="password" name="password" @focus="passFocus" :style="{border:isBorder2}"
+                         v-model="newPassValue" placeholder="新密码" class="zuo-control">
+                </div>
+                <div class="zuo-control-group">
+                  <img v-show="isNewPassShow" class="confirm" src="../../assets/images/两次密码不一致.png"/>
+                  <input type="password" name="repass" @focus="repassFocus" v-model="confirmValue" placeholder="新密码确认"
+                         :style="{border:isBorder3}" class="zuo-control">
+                </div>
+              </div>
+              <div class="actions">
+                <button id="forget-pass-submit" class="zuo-btn zuo-btn-theme zuo-btn-block" @click="checkLogin">确认修改
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -48,47 +96,124 @@
     name: 'login',
     data() {
       return {
-        isShow: false,
-        isLogon: true,
-        srcChecked: require('../../assets/icon_home_checkbox.png'),
-        srcChecked1: require('../../assets/icon_home_checkbox (1).png'),
-        isSrc: true,
+        isLock: true,
+        isPhone: false,
         isLogin: true,
-        login1: 'zuo-login-btn1',
-        login2: 'zuo-login-btn2',
-        isDisabled: false,
-        headers: [
-          {title: '首页', href: '#', active: 'active'},
-          {title: '深度', href: '#', active: ''},
-          {title: '下载APP', href: '#', active: ''}
-        ]
+        forget: '没有账号？去注册',
+        testCode: '验证码',
+        phoneValue: '',
+        isBorder: '',
+        isBorder1: '',
+        isBorder2: '',
+        isBorder3: '',
+        isFill: false,
+        fillWriteSrc: require('../../assets/images/请填写手机号.png'),
+        isLoginShow: true,
+        isForgetPassWord: false,
+        testCodeValue: '',
+        isTestShow: false,
+        newPassValue: '',
+        isPassShow: false,
+        confirmValue: '',
+        isNewPassShow: false
       }
     },
     methods: {
-      login() {
-        this.isShow = true;
-      },
-      logon() {
-        this.isLogon = true;
-      },
-      table(index) {
-        for (var i = 0; i < this.headers.length; i++) {
-          this.headers[i].active = '';
-          this.headers[index].active = 'active';
-
+      checkLogin() {
+        //判断手机号输入是否为空
+        if (this.phoneValue.length == 0) {
+          this.isBorder = '1px solid red';
+          this.isFill = true;
+          return;
+        }
+        //判断是否是一个手机号
+        let re = /^1[34578][0-9]{9}$/g;//不加0的
+        if (!re.test(this.phoneValue)) {
+          this.isBorder = '1px solid red';
+          this.isFill = true;
+          this.fillWriteSrc = require('../../assets/images/手机号码格式不正确.png');
+          return;//不提交
+        }
+        //判断验证码是否为空
+        if (this.testCodeValue.length == 0) {
+          this.isBorder1 = '1px solid red';
+          this.isTestShow = true;
+          return;
+        }
+        //判断新密码是否为空并且长度不小于6
+        if (this.newPassValue.length < 6) {
+          this.isBorder2 = '1px solid red';
+          this.isPassShow = true;
+          return
+        }
+        //判断新密码和确认密码是否一致
+        if (this.newPassValue !== this.confirmValue) {
+          this.isBorder3 = '1px solid red';
+          this.isNewPassShow = true;
+          return
         }
       },
-      checkLogon() {
-        this.isSrc = !this.isSrc
-        if (this.isSrc == false) {
-          this.isLogin = false;
-          this.isDisabled = true;
+      phoneFocus() {
+        this.isBorder = '';
+        this.isFill = false;
+      },
+      testCodeFocus() {
+        this.isBorder1 = '';
+        this.isTestShow = false;
+      },
+      passFocus() {
+        this.isBorder2 = '';
+        this.isPassShow = false;
+      },
+      repassFocus() {
+        this.isBorder3 = '';
+        this.isNewPassShow = false;
+      },
+      lockClick() {
+        this.isLock = !this.isLock;
+        this.isPhone = !this.isPhone;
+        this.isLogin = !this.isLogin;
+        if (this.forget == '没有账号？去注册') {
+          this.forget = '忘记密码'
         } else {
-          this.isLogin = true;
-          this.isDisabled = false;
+          this.forget = '没有账号？去注册';
         }
+        ;
+        if (this.testCode == '验证码') {
+          this.testCode = '密码'
+        } else {
+          this.testCode = '验证码'
+        }
+      },
+      forgetClick() {
+        if (this.forget == '没有账号？去注册') {
+          window.location.href = 'logon.html'
+        }
+        if (this.forget == '忘记密码') {
+          this.isLoginShow = false;
+          this.isForgetPassWord = true;
+        }
+      },
+      sendClick(){
+        //判断手机号输入是否为空
+        if (this.phoneValue.length == 0) {
+          this.isBorder = '1px solid red';
+          this.isFill = true;
+          return;
+        }
+        //判断是否是一个手机号
+        let re = /^1[34578][0-9]{9}$/g;//不加0的
+        if (!re.test(this.phoneValue)) {
+          this.isBorder = '1px solid red';
+          this.isFill = true;
+          this.fillWriteSrc = require('../../assets/images/手机号码格式不正确.png');
+          return;//不提交
+        }
+      },
+      maskClick() {
+        window.location.href = 'index.html';
       }
-    },
+    }
   }
 </script>
 
@@ -111,111 +236,112 @@
     clear: both;
   }
 
-  #zuo-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 3000;
-    width: 100%;
-    height: 60px;
-    background-color: rgb(39, 44, 47);
-  }
-
-  #container {
-    width: 95%;
-    margin: 0 auto;
-  }
-
-  .zuo-nav-left {
-    width: 30%;
-  }
-
-  .zuo-nav-right {
-    width: 70%;
-  }
-
-  .zuo-nav-right ul li {
-    line-height: 60px;
-    float: left;
-    list-style: none;
-    margin-left: 26px;
-
-  }
-
-  .zuo-nav-right ul li a {
-    color: rgb(127, 127, 127);
-    font-size: 14px;
-    text-decoration: none;
-  }
-
-  .zuo-nav-right ul li .active {
-    color: white;
-  }
-
-  .zuo-nav-left a {
-    line-height: 60px;
-    color: white;
-    text-decoration: none;
-  }
-
-  .zuo-nav-right-centre {
-    position: relative;
-    margin-left: 40px;
-    line-height: 60px;
-  }
-
-  .zuo-nav-right-centre_search {
-    font-size: 12px;
-    background-color: rgb(75, 80, 82);
-    border: none;
+  /*忘记密码部分*/
+  .auth-box button, input {
     outline: none;
-    border-radius: 5px;
-    width: 240px;
-    padding-left: 10px;
-    height: 36px;
+    border: none;
   }
 
-  .logo {
-    font-weight: 800;
-    font-size: 20px;
-  }
-
-  .logo_span {
-    margin-left: 5px;
-    font-size: 10px;
-    color: rgba(255, 255, 255, .3);
-    width: 100px;
-  }
-
-  .zuo-nav-right-left {
-    padding-left: 43px;
-  }
-
-  .zuo-nav-right-centre-img {
+  .auth-box {
+    width: 540px;
     position: absolute;
-    left: 86%;
-    top: 36%;
+    top: 100px;
+    left: 50%;
+    margin-left: -270px;
+  }
+
+  .closeForget {
+    position: absolute;
+    display: block;
     width: 20px;
     height: 20px;
+    top: 1%;
+    right: -6.2%;
   }
 
-  .zuo-nav-right-right-login {
-    width: 40px;
-    height: 60px;
+  .auth-box-body .box-title {
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background-color: #272c2f;
+    font-size: 18px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: #fff;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+
+  .form-body {
+    padding-top: 30px;
+  }
+
+  .zuo-control-group {
     position: relative;
+    margin-bottom: 20px;
   }
 
-  .zuo-nav-right-right img {
+  .zuo-control-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .pass {
     position: absolute;
-    left: -25px;
-    top: 18px;
-    width: 25px;
-    height: 25px;
+    right: -240px;
+    top: 10%;
   }
 
-  .zuo-nav-right-right-ul span {
-    font-size: 13px;
-    color: rgb(151, 160, 165);
+  .confirm {
+    position: absolute;
+    right: -240px;
+    top: 25%;
+  }
+
+  .auth-box-body .form-wrap {
+    padding: 30px;
+    background-color: #fff;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  .zuo-control-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .zuo-control-group input.zuo-control {
+    width: 100%;
+    background-color: #f7f7f7;
+    padding: 14px 20px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .zuo-btn-theme {
+    background-color: #1fd7e2;
+    color: #fff;
+  }
+
+  .auth-box-body button.zuo-btn-theme {
+    font-size: 18px;
+  }
+
+  .zuo-btn-block {
+    width: 100%;
+  }
+
+  .zuo-control-group #zuo-get-code {
+    width: 115px;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    padding: 12px 18px;
+    font-size: 14px;
   }
 
   /*登录弹出部分*/
@@ -340,6 +466,30 @@
     top: 30%;
   }
 
+  .fillWrite {
+    position: absolute;
+    right: -180px;
+    top: 6px;
+  }
+
+  .fillWrite1 {
+    position: absolute;
+    right: -240px;
+    top: 10px;
+  }
+
+  .fillWrite2 {
+    position: absolute;
+    right: -240px;
+    top: 10px;
+  }
+
+  .fillWrite3 {
+    position: absolute;
+    right: -180px;
+    top: 70px;
+  }
+
   .zuo-phone {
     width: 90%;
     height: 45px;
@@ -407,6 +557,10 @@
     position: relative;
     left: 6%;
     top: 34%;
+  }
+
+  .other-actions a {
+    text-decoration: none;
   }
 
   .other-actions1 {
