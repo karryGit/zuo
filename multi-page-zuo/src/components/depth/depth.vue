@@ -56,10 +56,11 @@
       </div>
     </header>
   </div>
+
 </template>
 <script>
   import axios from 'axios';
-
+  import MyBackTop from '../../components/index/backTop';
   export default {
     name: 'depth',
     data() {

@@ -7,7 +7,10 @@
       <MyHotTags id="right"></MyHotTags>
       <MyAttention class="float-right"></MyAttention>
       <MyHotPosts class="float-left"></MyHotPosts>
+      <MyBackTop></MyBackTop>
     </div>
+    <!--底部-->
+    <MyFooter></MyFooter>
   </div>
 </template>
 <script>
@@ -17,6 +20,8 @@
   import MyHotTags from '../../components/hotTags/hotTags';
   import MyAttention from '../../components/Attention/Attention';
   import MyHotPosts from '../../components/hotPosts/hotPosts';
+  import MyBackTop from '../../components/index/backTop';
+  import MyFooter from '../../components/index/footer';
   export default {
     name: 'index',
     components: {
@@ -26,6 +31,8 @@
       MyHotTags,
       MyAttention,
       MyHotPosts,
+      MyBackTop,
+      MyFooter
     },
   }
 </script>

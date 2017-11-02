@@ -12,11 +12,11 @@
           </div>
         </div>
         <div class="bar-right float-right">
-          <a href="#" class="good" @click="goodClick">
+          <a href="###" class="good" @click="goodClick">
             <img :src="goodImg"/>
             <span>好设计</span>
           </a>
-          <a href="#" class="bad" @click="badClick">
+          <a href="###" class="bad" @click="badClick">
             <img :src="badImg"/>
             <span>坏设计</span>
           </a>
@@ -97,30 +97,38 @@
             <div class="comment-header-left-text float-left">
               <a href="#">{{post.owner.username}}</a>
             </div>
+            <!--三个点-->
             <div class="comment-header-dot float-right">
-              <img src="../../assets/hotPostsImg/Dot.png"/>
+              <img @click="DotClick(index)" src="../../assets/hotPostsImg/Dot.png"/>
             </div>
             <div class="comment-header-share float-right">
-              <img src="../../assets/hotPostsImg/share.png"/>
+              <img @click="shareClicked" src="../../assets/hotPostsImg/share.png"/>
             </div>
             <span class="approve float-right">{{post.likeCount}}个赞同</span>
             <div class="comment-header-right-round float-right">
               <img src="../../assets/hotPostsImg/round.png"/>
+            </div>
+            <!--三个点下面的举报-->
+            <div class="Complaints" ref="Complaints">
+              <span class="dropdown-arrow1"></span>
+              <div class="Complaints-up">
+                <p>举报</p>
+              </div>
             </div>
           </header>
         </header>
         <!--评论图片-->
         <div class="comment-image-overlay">
           <img :src="post.postImage.url" alt="">
-            <div  class="mask"></div>
+          <div class="mask"></div>
           <a href="" class="feed-halo" :style="{left:(post.haloCenterRatio.width_ratio*100)-10+'%'
           ,top:(post.haloCenterRatio.height_ratio * 100)-10 + '%'}">
             <div class="like-tip goods">
               <span class="animated-pop"></span>
-                <div class="hide">
-                  <div class="like-tip-big">赞同</div>
-                  <div class="like-tip-small">这个态度</div>
-                </div>
+              <div class="hide">
+                <div class="like-tip-big">赞同</div>
+                <div class="like-tip-small">这个态度</div>
+              </div>
             </div>
           </a>
         </div>
@@ -154,31 +162,31 @@
                   <a href="">{{post.comments[0].author.username}}</a>
                   <span>-&nbsp;</span>
                   <span v-html="post.comments[0].text"></span>
-                </div>
-                <div class="coment-item-time clear_float">
-                  <span class="coment-item-time-before">{{post.comments[0].timeAgo}}</span>
-                  <span class="coment-item-time-reply">
-                   <a href="">回复</a>
+                  <div class="coment-item-time clear_float">
+                    <span class="coment-item-time-before">{{post.comments[0].timeAgo}}</span>
+                    <span class="coment-item-time-reply">
+                   <a href="" class="reply">回复</a>
                      <span>点亮</span>
                      <span><strong>{{post.comments[0].likeNumber}}</strong></span>
                   <img src="../../assets/hotPostsImg/bulb.png"/>
                  </span>
+                  </div>
                 </div>
               </li>
               <li class="comment-item" v-if="post.comments.length== 2">
-                <div class="comment-item-name" v-html="post.comments[1].author.username">
-                  <!--<a href="" v-html=""></a>-->
+                <div class="comment-item-name">
+                  <a href="" v-html="">{{post.comments[1].author.username}}</a>
                   <span>-&nbsp;</span>
-                  <span v-html="post.comments[1].text">{{post.comments[1].text}}</span>
-                </div>
-                <div class="coment-item-time clear_float">
-                  <span class="coment-item-time-before">{{post.comments[1].timeAgo}}</span>
-                  <span class="coment-item-time-reply">
-                   <a href="">回复</a>
+                  <span v-html="post.comments[1].text"></span>
+                  <div class="coment-item-time clear_float">
+                    <span class="coment-item-time-before">{{post.comments[1].timeAgo}}</span>
+                    <span class="coment-item-time-reply">
+                     <a href="" class="reply1">回复</a>
                      <span>点亮</span>
                      <span><strong>{{post.comments[1].likeNumber}}</strong></span>
-                  <img src="../../assets/hotPostsImg/bulb.png"/>
-                 </span>
+                     <img src="../../assets/hotPostsImg/bulb.png"/>
+                    </span>
+                  </div>
                 </div>
               </li>
             </ul>
@@ -187,79 +195,115 @@
           <div class="add-comment">
             <div class="add-body">
               <div class="input-wrap">
-                  <textarea placeholder="写下你的评论..." class="comment-text"
-                            style="margin-top: 0px; margin-bottom: 0px; height: 100px;">
-
+                <input @focus="commentFocus($event)" type="text" placeholder="写下你的评论..."
+                       class="new-comment">
+                <textarea placeholder="写下你的评论..." class="comment-text"
+                          style="margin-top: 0px; margin-bottom: 0px; height: 100px;">
                   </textarea>
               </div>
               <div class="add-comment-actions clear_float">
-                <a href="" class="cancel-new-comment float-left" @click="cancelClick">取消</a>
-                <a href="" class="post-new-comment float-right">评论</a>
+                <a href="###" class="cancel-new-comment float-left" @click="cancelClick($event)">取消</a>
+                <a href="###" class="post-new-comment float-right">评论</a>
               </div>
             </div>
           </div>
         </div>
       </main>
     </section>
+    <MyShare></MyShare>
   </div>
 </template>
 
 <script>
+  import MyShare from '../../components/hotPosts/share';
   import axios from 'axios';
-
 
   export default {
     name: 'hotPosts',
+    components: {
+      MyShare
+    },
     data() {
       return {
-        tf: 0,
-        tr: 0,
+        tf: true,
+        tr:true,
         goodImg: require('../../assets/hotPostsImg/check-box.png'),
         badImg: require('../../assets/hotPostsImg/check-box (1).png'),
         posts: [],
         arrayJson: [],
-        isShow: false
+        isShow: false,
+        isComplaintsShow: false,
+        passValue: true,
+        scroll: ''
       }
     },
     methods: {
       goodClick() {
-        this.tf++;
-        if (this.tf == 1) {
+         if(this.tr == false){
+           alert('至少选择一种设计类型!')
+           this.goodImg = require('../../assets/hotPostsImg/check-box.png');
+           return
+         }
+        this.tf = !this.tf;
+        if (!this.tf) {
           this.goodImg = require('../../assets/hotPostsImg/check-box_click.png');
-        } else if (this.tf == 2) {
+        } else {
           this.goodImg = require('../../assets/hotPostsImg/check-box.png');
-          this.tf = 0;
         }
       },
       badClick() {
-        this.tr++;
-        if (this.tr == 1) {
+         if(this.tf == false){
+           this.badImg = require('../../assets/hotPostsImg/check-box (1).png');
+           alert('至少选择一种设计类型!')
+           return
+         }
+        this.tr = !this.tr;
+        if (!this.tr) {
           this.badImg = require('../../assets/hotPostsImg/check-box_click.png');
-        } else if (this.tr == 2) {
+        } else{
           this.badImg = require('../../assets/hotPostsImg/check-box (1).png');
-          this.tr = 0;
         }
       },
       jiaoClick() {
         this.isShow = !this.isShow;
       },
-      cancelClick(){
-
+      cancelClick(event) {
+        event.target.parentNode.style.display = 'none';
+        event.target.parentNode.previousElementSibling.children[0].style.display = 'block';
+        event.target.parentNode.previousElementSibling.children[1].style.display = 'none';
+      },
+      commentFocus(event) {
+        event.target.style.display = 'none';
+        event.target.nextElementSibling.style.display = 'block';
+        event.target.parentNode.nextElementSibling.style.display = 'block';
+      },
+      //三个点的点击事件
+      DotClick(index) {
+        let ComplaintsArr = this.$refs.Complaints;
+        if (ComplaintsArr[index].style.display == 'block') {
+          ComplaintsArr[index].style.display = 'none';
+        } else {
+          ComplaintsArr[index].style.display = 'block';
+        }
+      },
+      //分享事件
+      shareClicked() {
+        this.passValue = true;
+//          this.$emit('pass',this.passValue)
+        console.log(123)
       }
     },
     mounted() {
       var _this = this;
       axios.get('api/web_hot_posts').then(function (response) {
-        console.log(response)
         let array = response.data.posts;
         for (var i = 0; i < array.length; i++) {
           _this.posts.push(array[i]);
           _this.arrayJson.push(array[i].comments);
-          console.log(array[i].comments);
         }
       }).catch(function (err) {
         console.log(err);
-      })
+      });
     }
   }
 </script>
@@ -375,6 +419,25 @@
     margin-left: -5px;
     top: -6px;
     left: 48px;
+    z-index: 1;
+  }
+
+  .Complaints-up {
+    border: 1px solid #ccc;
+    position: absolute;
+    left: 25.4%;
+    top: -40px;
+    border-radius: 5px;
+    width: 110px;
+    height: 80px;
+    background-color: white;
+  }
+
+  .Complaints-up p {
+    text-align: center;
+    line-height: 70px;
+    color: #a6a7a7;
+    font-weight: 500;
   }
 
   .dropdown-menu {
@@ -458,7 +521,7 @@
     margin-left: 10px;
     margin-top: 10px;
     width: 100%;
-    height: 45px;
+    height: 77px;
   }
 
   .comment-header-left {
@@ -495,6 +558,31 @@
     height: 25px;
   }
 
+  /*三个点下面的举报*/
+  .Complaints {
+    display: none;
+    z-index: 3000;
+    position: relative;
+    left: 60%;
+    top: 90px;
+  }
+
+  .dropdown-arrow1 {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-right: 0;
+    border-bottom: 0;
+    background-color: #fff;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin-left: -5px;
+    top: -47px;
+    left: 35%;
+  }
+
   .comment-header-share {
     width: 22px;
     height: 22px;
@@ -521,14 +609,17 @@
     margin-left: -17px;
     width: 600px;
   }
-  .comment-image-overlay:hover .hide{
+
+  .comment-image-overlay:hover .hide {
     opacity: 1;
   }
-  .comment-image-overlay:hover .mask{
+
+  .comment-image-overlay:hover .mask {
 
     opacity: 1;
   }
-  .comment-image-overlay:hover .goods{
+
+  .comment-image-overlay:hover .goods {
     border: 4px solid #1fd7e2;
   }
 
@@ -538,8 +629,9 @@
     top: 0;
     color: white;
   }
-  .hide{
-    transition:all 1s;
+
+  .hide {
+    transition: all 1s;
     opacity: 0;
   }
 
@@ -682,11 +774,10 @@
   }
 
   .comment-item {
-    padding-left: 5px;
+    padding-left: 10px;
     margin-top: -5px;
     line-height: 30px;
     margin-left: 20px;
-    height: 70px;
     width: 500px;
   }
 
@@ -695,28 +786,22 @@
   }
 
   .comment-item-name {
+    padding-left: 10px;
+    margin-top: 30px;
     margin-left: 15px;
   }
 
-  .coment-item-time {
-    margin-left: 18px;
-  }
-
-  .comment-list li:hover {
+  .comment-list .comment-item-name:hover {
     border-radius: 5px;
-    width: 520px;
-    height: 70px;
     background-color: rgb(247, 247, 247);
   }
 
   .comment-item-name a {
-
     font-size: 15px;
     font-weight: 500;
   }
 
   .comment-item-name span {
-
     font-size: 15px;
   }
 
@@ -736,6 +821,22 @@
     margin-left: 300px;
   }
 
+  .comment-list li :hover .reply {
+    display: inline-block;
+  }
+
+  .comment-list li :hover .reply1 {
+    display: inline-block;
+  }
+
+  .reply {
+    display: none;
+  }
+
+  .reply1 {
+    display: none;
+  }
+
   .coment-item-time-reply span {
     color: #A1A2A3;
     margin-left: 5px;
@@ -747,7 +848,6 @@
 
   .coment-item-time-reply a {
     color: #A1A2A3;
-    line-height: 35px;
     font-size: 14px;
   }
 
@@ -762,7 +862,22 @@
     margin-left: 20px;
   }
 
+  .input-wrap {
+    margin-top: 20px;
+  }
+
+  .new-comment {
+    display: block;
+    width: 100%;
+    outline: 0;
+    border: none;
+    padding: 10px 15px 21px 8px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
   .comment-text {
+    display: none;
     outline: none;
     border: none;
     width: 520px;
@@ -771,6 +886,7 @@
   }
 
   .add-comment-actions {
+    display: none;
     margin-left: 10px;
     width: 500px;
     height: 30px;
