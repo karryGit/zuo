@@ -86,7 +86,14 @@
         </ul>
       </div>
       <!--评论部分-->
-      <main id="comment-container" v-for="(post,index) in posts">
+      <main id="comment-container" class="clear_float" v-for="(post,index) in posts">
+        <!--ok编辑推荐-->
+        <div class="empty"></div>
+        <div class="Editor">
+          &nbsp;
+          <img src="../../assets/images/OK手势.png"/>
+          <span>编辑推荐</span>
+        </div>
         <!--评论头部-->
         <header class="comment-header">
           <header class="comment-header-left clear_float">
@@ -101,8 +108,9 @@
             <div class="comment-header-dot float-right">
               <img @click="DotClick(index)" src="../../assets/hotPostsImg/Dot.png"/>
             </div>
+            <!--分享按钮-->
             <div class="comment-header-share float-right">
-              <img @click="shareClicked" src="../../assets/hotPostsImg/share.png"/>
+              <img @click="shareClickedY" src="../../assets/hotPostsImg/share.png"/>
             </div>
             <span class="approve float-right">{{post.likeCount}}个赞同</span>
             <div class="comment-header-right-round float-right">
@@ -112,7 +120,7 @@
             <div class="Complaints" ref="Complaints">
               <span class="dropdown-arrow1"></span>
               <div class="Complaints-up">
-                <p>举报</p>
+                <p><a href="###">举报</a></p>
               </div>
             </div>
           </header>
@@ -154,7 +162,7 @@
             <div class="more-info-comment">
               <img src="../../assets/hotPostsImg/info.png"/>
               <span>{{post.commentedCount}}条评论</span>
-              <span>更多评论...</span>
+              <span v-if="post.commentedCount > 2">更多评论...</span>
             </div>
             <ul class="comment-list">
               <li class="comment-item">
@@ -210,7 +218,7 @@
         </div>
       </main>
     </section>
-    <MyShare></MyShare>
+    <MyShare :pass="isShowShare" @shareClicked="shareClick"></MyShare>
   </div>
 </template>
 
@@ -226,7 +234,7 @@
     data() {
       return {
         tf: true,
-        tr:true,
+        tr: true,
         goodImg: require('../../assets/hotPostsImg/check-box.png'),
         badImg: require('../../assets/hotPostsImg/check-box (1).png'),
         posts: [],
@@ -234,16 +242,17 @@
         isShow: false,
         isComplaintsShow: false,
         passValue: true,
-        scroll: ''
+        scroll: '',
+        isShowShare: false
       }
     },
     methods: {
       goodClick() {
-         if(this.tr == false){
-           alert('至少选择一种设计类型!')
-           this.goodImg = require('../../assets/hotPostsImg/check-box.png');
-           return
-         }
+        if (this.tr == false) {
+          alert('至少选择一种设计类型!')
+          this.goodImg = require('../../assets/hotPostsImg/check-box.png');
+          return
+        }
         this.tf = !this.tf;
         if (!this.tf) {
           this.goodImg = require('../../assets/hotPostsImg/check-box_click.png');
@@ -252,15 +261,15 @@
         }
       },
       badClick() {
-         if(this.tf == false){
-           this.badImg = require('../../assets/hotPostsImg/check-box (1).png');
-           alert('至少选择一种设计类型!')
-           return
-         }
+        if (this.tf == false) {
+          this.badImg = require('../../assets/hotPostsImg/check-box (1).png');
+          alert('至少选择一种设计类型!')
+          return
+        }
         this.tr = !this.tr;
         if (!this.tr) {
           this.badImg = require('../../assets/hotPostsImg/check-box_click.png');
-        } else{
+        } else {
           this.badImg = require('../../assets/hotPostsImg/check-box (1).png');
         }
       },
@@ -286,11 +295,13 @@
           ComplaintsArr[index].style.display = 'block';
         }
       },
+      //自定义事件
+      shareClickedY() {
+        this.isShowShare = true;
+      },
       //分享事件
-      shareClicked() {
-        this.passValue = true;
-//          this.$emit('pass',this.passValue)
-        console.log(123)
+      shareClick(value) {
+        this.isShowShare = value;
       }
     },
     mounted() {
@@ -433,11 +444,32 @@
     background-color: white;
   }
 
-  .Complaints-up p {
+  .Complaints-up p:hover {
+    border-radius: 5px;
+    line-height: 55px;
     text-align: center;
-    line-height: 70px;
+    margin: 8px auto;
+    width: 80px;
+    height: 60px;
+    background-color: rgb(245, 245, 245);
+  }
+
+  .Complaints-up p {
+    line-height: 55px;
+    text-align: center;
+    margin: 8px auto;
+    width: 80px;
+    height: 60px;
+  }
+
+  .Complaints-up a {
+    padding: 10px 15px;
+    text-decoration: none;
     color: #a6a7a7;
     font-weight: 500;
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 5px;
   }
 
   .dropdown-menu {
@@ -514,14 +546,51 @@
     border-radius: 5px;
     position: relative;
     background-color: #fff;
-    z-index: 450;
+    z-index: 1;
+  }
+
+  .Editor {
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #09D8E1;
+    position: absolute;
+    left: -37px;
+    top: 0;
+    z-index: -5;
+  }
+  .Editor:hover{
+    transition: all 1s;
+    left: -110px;
+  }
+
+  .empty {
+    width: 120px;
+    height: 40px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+
+  .Editor img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .Editor span {
+    line-height: 40px;
+    color: white;
+    font-weight: 500;
+    padding-left: 5px;
   }
 
   .comment-header {
     margin-left: 10px;
     margin-top: 10px;
     width: 100%;
-    height: 77px;
+    height: 68px;
   }
 
   .comment-header-left {

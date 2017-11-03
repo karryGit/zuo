@@ -6,7 +6,6 @@
         <a href="#">{{hotTag.content}}</a>
       </button>
     </section>
-
   </div>
 </template>
 
@@ -18,8 +17,10 @@
     name: 'hotTags',
     data() {
       return {
-        hotTags: []
+        hotTags: [],
       }
+    },
+    methods: {
     },
     mounted() {
       var _this = this;
@@ -28,8 +29,7 @@
         for (var i = 0; i < arr.length; i++) {
           _this.hotTags.push(arr[i])
         }
-
-      })
+      });
     }
 
   }

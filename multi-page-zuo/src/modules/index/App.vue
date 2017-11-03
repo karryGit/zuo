@@ -21,7 +21,7 @@
   import MyAttention from '../../components/Attention/Attention';
   import MyHotPosts from '../../components/hotPosts/hotPosts';
   import MyBackTop from '../../components/index/backTop';
-  import MyFooter from '../../components/index/footer';
+  import MyFooter from '../../components/footer/footer';
   export default {
     name: 'index',
     components: {

@@ -1,9 +1,10 @@
 <template>
   <div>
-    <div v-show="isShare" class="mask" @click="maskingClick($event)">
-      <!--关闭-->
-      <img class="close" src="../../assets/close.png" @click="closeClick($event)"/>
+    <transition name="fade">
+    <div v-show="pass" class="mask" @click="maskingClick">
       <div class="auth-box">
+        <!--关闭-->
+        <img class="close1" src="../../assets/close.png" @click="closeClick"/>
         <div class="share-inner">
           <div class="weixin-part">
             <div class="title-tip">
@@ -39,6 +40,7 @@
         </div>
       </div>
     </div>
+    </transition>
   </div>
 </template>
 
@@ -47,19 +49,19 @@
     name: 'share',
     data() {
       return {
-        isShare:false
+
       }
+    },
+    props: {
+      pass: null
     },
     methods: {
       //蒙版点击事件
-      maskingClick(event) {
-        event.target.style.display = 'none';
+      maskingClick() {
+        this.$emit("shareClicked", false);
       },
-      closeClick(event) {
-        event.target.parentNode.style.display = 'none';
-      },
-      shareClick(shareValue){
-        console.log(shareValue)
+      closeClick() {
+        this.$emit("shareClicked", false);
       }
     }
   }
@@ -67,13 +69,20 @@
 
 <style scoped>
   @import '../../../node_modules/vue2-animate/dist/vue2-animate.min.css';
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */
+  {
+    opacity: 0
+  }
 
-  .close {
+  .close1 {
     width: 20px;
     height: 20px;
     position: absolute;
-    right: 21%;
-    top: 23%;
+    right: -5%;
+    top: 2%;
   }
 
   .mask {
@@ -97,7 +106,7 @@
     height: 270px;
     border-radius: 5px;
     background-color: white;
-    position: absolute;
+    position: relative;
     top: 150px;
     left: 50%;
     margin-left: -270px;

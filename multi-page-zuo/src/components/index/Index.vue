@@ -41,7 +41,6 @@
 <style scoped>
   body {
     width: 100%;
-    height: 5000px;
     background-color: rgb(246, 246, 246);
   }
 

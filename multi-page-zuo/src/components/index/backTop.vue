@@ -5,46 +5,25 @@
     </div>
   </div>
 </template>
-
 <script>
   export default {
     name: 'backTop',
     data() {
       return {
-        scroll: '',
         isBack: false
       }
     },
     methods: {
       menu() {
         var _this = this;
-        document.onmousewheel = function  (e) {
-          var e = e ||window.event;
-
-          //1.滚动条滚动的距离
-          this.scroll = document.body.scrollTop;
-
-          //2.窗口的可视宽高
-          var winHeigth = document.documentElement.clientHeight;
-
-          //3.整体页面的高度
-          var pageHeight = document.documentElement.scrollHeight;
+        document.onmousewheel = function (e) {
+          var e = e || window.event;
           if (e.wheelDelta > 0) {
-
-            if ((winHeigth + this.scroll) / pageHeight > 0.5){
-              _this.isBack = false;
-              console.log('上')
-            }
-          }else{
-            //判断是否到达底部90%
-            if ((winHeigth + this.scroll) / pageHeight > 0.5) {
-              console.log('下')
+                 _this.isBack = false;
+          } else {
               _this.isBack = true;
-            }
           }
         }
-
-
       }
     },
     mounted() {
@@ -56,6 +35,7 @@
 <style scoped>
   #backTop {
     position: fixed;
+    z-index: 3000;
     right: 10%;
     top: 80%;
     width: 40px;
