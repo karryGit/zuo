@@ -29,58 +29,10 @@
               <span class="bar-all">全部</span>
             </a>
           </li>
-          <li class="dropdown-li">
+          <li class="dropdown-li" v-for="list in listArr">
             <a href="" class="dropdown-li-a">
-              <span class="round1">●</span>
-              <span class="bar-all">日用</span>
-            </a>
-          </li>
-          <li class="dropdown-li">
-            <a href="" class="dropdown-li-a">
-              <span class="round">●</span>
-              <span class="bar-all">公共</span>
-            </a>
-          </li>
-          <li class="dropdown-li">
-            <a href="" class="dropdown-li-a">
-              <span class="round">●</span>
-              <span class="bar-all">关爱</span>
-            </a>
-          </li>
-          <li class="dropdown-li">
-            <a href="" class="dropdown-li-a">
-              <span class="round">●</span>
-              <span class="bar-all">家具</span>
-            </a>
-          </li>
-          <li class="dropdown-li">
-            <a href="" class="dropdown-li-a">
-              <span class="round">●</span>
-              <span class="bar-all">时尚</span>
-            </a>
-          </li>
-          <li class="dropdown-li">
-            <a href="" class="dropdown-li-a">
-              <span class="round">●</span>
-              <span class="bar-all">美食</span>
-            </a>
-          </li>
-          <li class="dropdown-li">
-            <a href="" class="dropdown-li-a">
-              <span class="round">●</span>
-              <span class="bar-all">数码</span>
-            </a>
-          </li>
-          <li class="dropdown-li">
-            <a href="" class="dropdown-li-a">
-              <span class="round">●</span>
-              <span class="bar-all">视觉</span>
-            </a>
-          </li>
-          <li class="dropdown-li">
-            <a href="" class="dropdown-li-a">
-              <span class="round">●</span>
-              <span class="bar-all">空间</span>
+              <span class="round" :style="{color:list.color}">●</span>
+              <span class="bar-all">{{list.title}}</span>
             </a>
           </li>
         </ul>
@@ -239,11 +191,23 @@
         badImg: require('../../assets/hotPostsImg/check-box (1).png'),
         posts: [],
         arrayJson: [],
+        listArr:[
+          {color:'#E8CDA6',title:'日用'},
+          {color:'#7FEF3D',title:'公共'},
+          {color:'#FF032A',title:'关爱'},
+          {color:'#620010',title:'家居'},
+          {color:'#C900FF',title:'时尚'},
+          {color:'#FF9100',title:'美食'},
+          {color:'#00917E',title:'数码'},
+          {color:'#FEF100',title:'视觉'},
+          {color:'#00BFF7',title:'空间'}
+        ],
         isShow: false,
         isComplaintsShow: false,
         passValue: true,
         scroll: '',
-        isShowShare: false
+        isShowShare: false,
+        colorS:''
       }
     },
     methods: {
@@ -478,6 +442,7 @@
     width: 100px;
     background-color: white;
     position: relative;
+    z-index: 500;
     top: 32px;
     min-width: 100px;
     left: -3px;
@@ -532,13 +497,6 @@
     margin-right: 10px;
   }
 
-  .dropdown-li a .round1 {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    color: #d5352a;
-    margin-right: 10px;
-  }
 
   #comment-container {
     width: 600px;
@@ -546,7 +504,7 @@
     border-radius: 5px;
     position: relative;
     background-color: #fff;
-    z-index: 1;
+    z-index: 450;
   }
 
   .Editor {

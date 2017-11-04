@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <!--全局容器-->
     <header id="zuo-content-container">
       <!--头部标题部分-->

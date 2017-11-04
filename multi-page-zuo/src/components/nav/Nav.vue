@@ -20,9 +20,10 @@
           </ul>
           <!--搜索框-->
           <div class="zuo-nav-right-centre float-left">
-            <input class="zuo-nav-right-centre_search" type="text" placeholder="输入关键字搜索">
-            <a href="#" class="zuo-nav-right-centre_a">
-              <img class="zuo-nav-right-centre-img" src="../../assets/sousuo.png"/>
+            <input @keyup.13="searchKey($event)" class="zuo-nav-right-centre_search" type="text" v-model="searchValue"
+                   placeholder="输入关键字搜索">
+            <a href="" class="zuo-nav-right-centre_a">
+              <img @click="searchClick($event)" class="zuo-nav-right-centre-img" src="../../assets/sousuo.png"/>
             </a>
           </div>
           <!--登录注册部分-->
@@ -40,92 +41,6 @@
         </div>
       </nav>
     </nav>
-    <!--&lt;!&ndash;登录弹出页面&ndash;&gt;-->
-    <!--<div v-show="isShow" id="zuo-login">-->
-      <!--<div class="zuo-overlay">-->
-        <!--&lt;!&ndash;登录header&ndash;&gt;-->
-        <!--<div class="zuo-login-con-container">-->
-          <!--<div class="login-header">-->
-            <!--<img src="../../assets/zhuomoniao.png"/>-->
-            <!--<span class="title-text">欢迎回到&nbsp;&nbsp;-->
-              <!--<strong>ZUO</strong>-->
-            <!--</span>-->
-          <!--</div>-->
-          <!--&lt;!&ndash;登录内容&ndash;&gt;-->
-          <!--<div class="login-content">-->
-            <!--<div class="close" @click="close">-->
-              <!--<img src="../../assets/close.png"/>-->
-            <!--</div>-->
-            <!--<img class="weibo" src="../../assets/weibo.png"/>-->
-            <!--<img class="weixin" src="../../assets/weixin.png"/>-->
-            <!--<p class="social">你可以使用第三方社交账号直接登录</p>-->
-            <!--<div class="hengxian-wrap">-->
-              <!--<div class="hengxian1"></div>-->
-              <!--<div class="or">或者</div>-->
-              <!--<div class="hengxian2"></div>-->
-            <!--</div>-->
-            <!--<div class="zuo-send">-->
-              <!--<input class="zuo-phone" type="text" placeholder="手机号">-->
-              <!--<input class="zuo-captcha" type="text" placeholder="验证码">-->
-              <!--<button class="send">发送验证码</button>-->
-            <!--</div>-->
-            <!--&lt;!&ndash;没有账号?去注册&ndash;&gt;-->
-            <!--<div class="other-actions">-->
-              <!--<a class="sign-up-link">没有账号？去注册</a>-->
-              <!--<a class="pass-login-link">-->
-                <!--<img class="lock" src="../../assets/lock.png"/>-->
-                <!--<span>手机密码登录</span>-->
-              <!--</a>-->
-            <!--</div>-->
-            <!--<button class="zuo-login-btn">登录</button>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash;注册弹出页面&ndash;&gt;-->
-    <!--<div v-show="isLogon ? 'key': ''" id="zuo-logon">-->
-      <!--<div class="zuo-overlay">-->
-        <!--&lt;!&ndash;登录header&ndash;&gt;-->
-        <!--<div class="zuo-login-con-container">-->
-          <!--<div class="login-header">-->
-            <!--<img src="../../assets/zhuomoniao.png"/>-->
-            <!--<span class="title-text">-->
-              <!--<strong>ZUO</strong>&nbsp;&nbsp;-->
-              <!--欢迎你的加入-->
-            <!--</span>-->
-          <!--</div>-->
-          <!--&lt;!&ndash;登录内容&ndash;&gt;-->
-          <!--<div class="login-content1">-->
-            <!--<div class="close" @click="close">-->
-              <!--<img src="../../assets/close.png"/>-->
-            <!--</div>-->
-            <!--<img class="weibo" src="../../assets/weibo.png"/>-->
-            <!--<img class="weixin" src="../../assets/weixin.png"/>-->
-            <!--<p class="social">你可以使用第三方社交账号直接登录</p>-->
-            <!--<div class="hengxian-wrap">-->
-              <!--<div class="hengxian1"></div>-->
-              <!--<div class="or">或者</div>-->
-              <!--<div class="hengxian2"></div>-->
-            <!--</div>-->
-            <!--<div class="zuo-send">-->
-              <!--<input class="zuo-phone" type="text" placeholder="手机号">-->
-              <!--<input class="zuo-captcha" type="text" placeholder="验证码">-->
-              <!--<button class="send1">发送验证码</button>-->
-              <!--<input class="password" type="password" placeholder="密码">-->
-              <!--<input class="confirmPassword" type="password" placeholder="确认密码">-->
-            <!--</div>-->
-            <!--&lt;!&ndash;已有账号去登录&ndash;&gt;-->
-            <!--<div class="other-actions1">-->
-              <!--<img @click="checkLogon" class="checked" :src="isSrc ? srcChecked:srcChecked1"/>-->
-              <!--<span class="policy-tip">我已经认真阅读并同意<strong>ZUO</strong>的</span>-->
-              <!--<a id="login-link">已有账号，登录</a>-->
-              <!--<a class="agree" href="http://zuoooodesign.lofter.com/post/1d1a2c6b_6478482" target="_blank">《用户协议》</a>-->
-            <!--</div>-->
-            <!--<button :class="isLogin ? login1 : login2" :disabled="isDisabled">注册</button>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
   </div>
 </template>
 <script>
@@ -144,6 +59,7 @@
         login1: 'zuo-login-btn1',
         login2: 'zuo-login-btn2',
         isDisabled: false,
+        searchValue: '',
         headers: [
           {title: '首页', href: 'index.html', active: 'active'},
           {title: '深度', href: 'depth.html', active: ''},
@@ -176,6 +92,28 @@
         } else {
           this.isLogin = true;
           this.isDisabled = false;
+        }
+      },
+      searchClick(event) {
+        event.target.parentNode.href = '###';
+        if (this.searchValue.length <= 0) {
+          alert('请输入搜索内容');
+          return;
+        }
+        if (this.searchValue.length > 0) {
+          location.href = 'search.html?'+this.searchValue;
+        }
+      },
+      searchKey(event) {
+        if (event.keyCode == 13) {
+          event.target.nextElementSibling.href = '###';
+          if (this.searchValue.length <= 0) {
+            alert('请输入搜索内容');
+            return;
+          }
+          if (this.searchValue.length > 0) {
+            location.href = 'search.html?'+this.searchValue;
+          }
         }
       }
     }
