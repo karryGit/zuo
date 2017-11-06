@@ -171,7 +171,7 @@
     margin: 0 auto;
   }
   .carousel-body-inner {
-    line-height: 42px;
+    line-height: 43px;
   }
 
   .carousel-link {

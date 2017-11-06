@@ -4,9 +4,10 @@
       <div class="bar-wrap clear_float">
         <div class="bar-left float-left" @click="jiaoClick">
           <div class="bar-left-dian">
-            <img src="../../assets/hotPostsImg/dian-b.png"/>
+            <img v-show="isImgShow" src="../../assets/hotPostsImg/dian-b.png"/>
+            <span v-show="islistShow" :style="{color:listColor}">●</span>
           </div>
-          <span class="bar-text">全部</span>
+          <span class="bar-text" ref="all">全部</span>
           <div class="bar-left-jiao">
             <img src="../../assets/hotPostsImg/down.png"/>
           </div>
@@ -23,14 +24,14 @@
         </div>
         <ul v-show="isShow" class="dropdown-menu">
           <span class="dropdown-arrow"></span>
-          <li class="dropdown-li">
-            <a href="" class="dropdown-li-a">
-              <img src="../../assets/hotPostsImg/dian-b副本.png"/>
+          <li class="dropdown-li" @click="dropClick">
+            <a href="###" class="dropdown-li-a">
+              <img  src="../../assets/hotPostsImg/dian-b副本.png"/>
               <span class="bar-all">全部</span>
             </a>
           </li>
-          <li class="dropdown-li" v-for="list in listArr">
-            <a href="" class="dropdown-li-a">
+          <li class="dropdown-li" v-for="(list,index) in listArr">
+            <a href="###" class="dropdown-li-a" @click="allClick(index)">
               <span class="round" :style="{color:list.color}">●</span>
               <span class="bar-all">{{list.title}}</span>
             </a>
@@ -207,7 +208,10 @@
         passValue: true,
         scroll: '',
         isShowShare: false,
-        colorS:''
+        colorS:'',
+        isImgShow:true,
+        islistShow:false,
+        listColor:'',
       }
     },
     methods: {
@@ -266,6 +270,19 @@
       //分享事件
       shareClick(value) {
         this.isShowShare = value;
+      },
+      //全部列表的点击事件
+      allClick(index){
+        this.isImgShow = false;
+        this.islistShow = true;
+        this.$refs.all.innerText = this.listArr[index].title;
+        this.listColor = this.listArr[index].color;
+      },
+      //点击全部的时候上面为全部
+      dropClick(){
+        this.$refs.all.innerText = '全部';
+        this.isImgShow = true;
+        this.islistShow = false;
       }
     },
     mounted() {

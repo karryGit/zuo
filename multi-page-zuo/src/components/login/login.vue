@@ -1,7 +1,7 @@
 <template>
   <!--登录弹出页面-->
   <div id="zuo-login">
-    <div class="zuo-overlay" @click="maskClick">
+    <div class="zuo-overlay">
       <!--登录header-->
       <div class="zuo-login-con-container" v-show="isLoginShow">
         <div class="login-header">
@@ -12,7 +12,7 @@
         </div>
         <!--登录内容-->
         <div class="login-content">
-          <div class="close">
+          <div class="close" @click="maskClick">
             <a href="index.html"><img src="../../assets/close.png"/></a>
           </div>
           <img class="weibo" src="../../assets/weibo.png"/>
@@ -28,7 +28,7 @@
             <input class="zuo-phone" @focus="phoneFocus" :style="{border:isBorder}" v-model="phoneValue" type="text"
                    placeholder="手机号">
             <img v-show="isTestShow" class="fillWrite3" src="../../assets/images/请填写验证码.png"/>
-            <input @focus="testCodeFocus" class="zuo-captcha" type="text" v-model="testCodeValue"
+            <input @focus="testCodeFocus" class="zuo-captcha" type="password" v-model="testCodeValue"
                    :placeholder="testCode" :style="{border:isBorder1}">
             <button v-show="isLogin" @click="sendClick" class="send">发送验证码</button>
           </div>
@@ -92,6 +92,7 @@
 </template>
 
 <script>
+  import axios from 'axios';
   export default {
     name: 'login',
     data() {
@@ -134,12 +135,28 @@
           this.fillWriteSrc = require('../../assets/images/手机号码格式不正确.png');
           return;//不提交
         }
-        //判断验证码是否为空
-        if (this.testCodeValue.length == 0) {
-          this.isBorder1 = '1px solid red';
-          this.isTestShow = true;
-          return;
-        }
+        let _this = this;
+        axios({
+          method:'post',
+          url:'api/login_by_pass',
+          data:{
+            password:this.testCodeValue,
+            code:null,
+            phone:this.phoneValue
+          }
+        }).then(function (res) {
+           if(res.data.status == 'ok'){
+             _this.testCodeValue = '';
+             _this.phoneValue = '';
+             console.log(res.data.msg)
+              alert('登录成功');
+           }else {
+             alert('登录失败')
+           }
+
+        }).catch(function (err) {
+          console.log(err)
+        });
         //判断新密码是否为空并且长度不小于6
         if (this.newPassValue.length < 6) {
           this.isBorder2 = '1px solid red';
@@ -152,6 +169,13 @@
           this.isNewPassShow = true;
           return
         }
+        //判断验证码是否为空
+        if (this.testCodeValue.length == 0) {
+          this.isBorder1 = '1px solid red';
+          this.isTestShow = true;
+          return;
+        }
+
       },
       phoneFocus() {
         this.isBorder = '';

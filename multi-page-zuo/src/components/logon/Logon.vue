@@ -1,7 +1,7 @@
 <template>
   <!--注册弹出页面-->
   <div id="zuo-logon">
-    <div class="zuo-overlay" @click="maskClick">
+    <div class="zuo-overlay" >
       <!--登录header-->
       <div class="zuo-login-con-container">
         <div class="login-header">
@@ -13,7 +13,7 @@
         </div>
         <!--登录内容-->
         <div class="login-content1">
-          <div class="close">
+          <div class="close" @click.stop.prevent="maskClick">
             <a href="index.html"> <img src="../../assets/close.png"/></a>
           </div>
           <img class="weibo" src="../../assets/weibo.png"/>
@@ -33,7 +33,7 @@
                    type="text" placeholder="验证码">
             <button class="send1" @click="sendClick">发送验证码</button>
             <img v-show="isPassShow" class="pass" src="../../assets/images/密码长度不小于6.png"/>
-            <input @focus="passFocus" :style="{border:isBorder2}" class="password" v-model="password" type="password"
+            <input  @focus="passFocus" :style="{border:isBorder2}" class="password" v-model="password" type="password"
                    placeholder="密码">
             <img v-show="isNewPassShow" class="confirm" src="../../assets/images/两次密码不一致.png"/>
             <input :style="{border:isBorder3}" @focus="repassFocus" class="confirmPassword" v-model="affirmPass"
@@ -125,7 +125,6 @@
           this.isNewPassShow = true;
           return
         }
-
       },
       phoneFocus() {
         this.isBorder = '';
@@ -200,6 +199,7 @@
   }
 
   .zuo-login-con-container {
+    z-index: 9999;
     border-radius: 5px;
     width: 540px;
     position: absolute;
