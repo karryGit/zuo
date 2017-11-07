@@ -1,7 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="96ba0cde-b65d-4ffe-a4eb-24829ec573f6" name="Default" comment="" />
+    <list default="true" id="96ba0cde-b65d-4ffe-a4eb-24829ec573f6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/bg.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/bg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/close.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/close.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/close1.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/close1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/denglu.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/denglu.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/download/ios.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/download/ios.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/Dot.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/Dot.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/bulb.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/bulb.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/c.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/c.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/check-box (1).png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/check-box (1).png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/check-box.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/check-box.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/check-box_click.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/check-box_click.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/dian-b.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/dian-b.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/dian-b副本.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/dian-b副本.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/down.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/down.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/info.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/info.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/round.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/round.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/share.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/hotPostsImg/share.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/icon_home_checkbox (1).png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/icon_home_checkbox (1).png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/icon_home_checkbox.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/icon_home_checkbox.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/C.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/C.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/OK手势.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/OK手势.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/authorGuanFang.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/authorGuanFang.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/authorWeiXin.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/authorWeiXin.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/authorXinLang.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/authorXinLang.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/avatar.jpg" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/avatar.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/bg.jpg" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/bg.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/douban.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/douban.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/establish_BG.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/establish_BG.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/false.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/false.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/hua.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/hua.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/huaban.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/huaban.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/i.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/i.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/ios1.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/ios1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/ios2.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/ios2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/kongjian.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/kongjian.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/p.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/p.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/scan-wechat.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/scan-wechat.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/scan.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/scan.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/weixin1.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/weixin1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/weixin2.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/weixin2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/weixinErWeiMa.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/weixinErWeiMa.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/xin.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/xin.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/xinlang.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/xinlang.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/zuoLogo.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/zuoLogo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/下.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/下.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/两次密码不一致.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/两次密码不一致.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/信息.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/信息.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/全部.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/全部.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/右 (1).png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/右 (1).png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/复选框 (1).png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/复选框 (1).png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/复选框 (2).png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/复选框 (2).png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/复选框.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/复选框.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/密码错误.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/密码错误.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/密码长度不小于6.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/密码长度不小于6.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/微信.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/微信.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/微信hover.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/微信hover.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/手机.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/手机.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/手机号已经注册.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/手机号已经注册.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/手机号码格式不正确.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/手机号码格式不正确.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/手机号还没有注册.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/手机号还没有注册.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/搜索.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/搜索.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/新浪.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/新浪.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/新浪hover.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/新浪hover.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/星.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/星.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/更多2.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/更多2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/灯 (1).png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/灯 (1).png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/点赞 (1).png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/点赞 (1).png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/点赞.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/点赞.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/登录.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/登录.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/请填写手机号.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/请填写手机号.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/请填写验证码.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/请填写验证码.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/转发.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/转发.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/返回顶部.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/返回顶部.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/选中-实心-圆形.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/选中-实心-圆形.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/锁.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/锁.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/验证码错误.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/images/验证码错误.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/lock.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/lock.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/logo.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/sousuo.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/sousuo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/weibo.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/weibo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/weixin.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/weixin.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/weixinPublic.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/weixinPublic.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/weixinPublic_hover.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/weixinPublic_hover.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/woodpecker.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/woodpecker.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/woodpecker_hover.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/woodpecker_hover.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/xiangyou.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/xiangyou.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/assets/zhuomoniao.png" afterPath="$PROJECT_DIR$/multi-page-zuo/src/assets/zhuomoniao.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/static/.gitkeep" afterPath="$PROJECT_DIR$/multi-page-zuo/static/.gitkeep" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/zuo.iml" afterPath="$PROJECT_DIR$/.idea/zuo.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/.babelrc" afterPath="$PROJECT_DIR$/multi-page-zuo/.babelrc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/.editorconfig" afterPath="$PROJECT_DIR$/multi-page-zuo/.editorconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/.gitignore" afterPath="$PROJECT_DIR$/multi-page-zuo/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/.postcssrc.js" afterPath="$PROJECT_DIR$/multi-page-zuo/.postcssrc.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/README.md" afterPath="$PROJECT_DIR$/multi-page-zuo/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/build/build.js" afterPath="$PROJECT_DIR$/multi-page-zuo/build/build.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/build/check-versions.js" afterPath="$PROJECT_DIR$/multi-page-zuo/build/check-versions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/build/dev-client.js" afterPath="$PROJECT_DIR$/multi-page-zuo/build/dev-client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/build/dev-server.js" afterPath="$PROJECT_DIR$/multi-page-zuo/build/dev-server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/build/utils.js" afterPath="$PROJECT_DIR$/multi-page-zuo/build/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/build/vue-loader.conf.js" afterPath="$PROJECT_DIR$/multi-page-zuo/build/vue-loader.conf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/build/webpack.base.conf.js" afterPath="$PROJECT_DIR$/multi-page-zuo/build/webpack.base.conf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/build/webpack.dev.conf.js" afterPath="$PROJECT_DIR$/multi-page-zuo/build/webpack.dev.conf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/build/webpack.prod.conf.js" afterPath="$PROJECT_DIR$/multi-page-zuo/build/webpack.prod.conf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/config/dev.env.js" afterPath="$PROJECT_DIR$/multi-page-zuo/config/dev.env.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/config/index.js" afterPath="$PROJECT_DIR$/multi-page-zuo/config/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/config/prod.env.js" afterPath="$PROJECT_DIR$/multi-page-zuo/config/prod.env.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/package-lock.json" afterPath="$PROJECT_DIR$/multi-page-zuo/package-lock.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/package.json" afterPath="$PROJECT_DIR$/multi-page-zuo/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/Attention/Attention.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/Attention/Attention.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/depth/depth.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/depth/depth.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/downloadApp/downloadApp.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/downloadApp/downloadApp.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/downloadApp/downloadPublic.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/downloadApp/downloadPublic.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/footer/feedback.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/footer/feedback.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/footer/footer.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/footer/footer.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/header/header.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/header/header.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/hotPosts/hotPosts.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/hotPosts/hotPosts.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/hotPosts/share.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/hotPosts/share.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/hotTags/hotTags.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/hotTags/hotTags.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/index/Index.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/index/Index.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/index/backTop.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/index/backTop.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/login/login.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/login/login.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/logon/Logon.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/logon/Logon.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/nav/Nav.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/nav/Nav.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/components/nav/search.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/components/nav/search.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/depth/App.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/depth/App.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/depth/depth.html" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/depth/depth.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/depth/depth.js" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/depth/depth.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/downloadApp/App.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/downloadApp/App.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/downloadApp/downloadApp.html" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/downloadApp/downloadApp.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/downloadApp/downloadApp.js" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/downloadApp/downloadApp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/downloadWechat/App.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/downloadWechat/App.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/downloadWechat/downloadApp.html" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/downloadWechat/downloadApp.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/downloadWechat/downloadApp.js" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/downloadWechat/downloadApp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/index/App.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/index/App.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/index/index.html" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/index/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/index/index.js" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/index/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/login/App.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/login/App.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/login/login.html" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/login/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/login/logon.js" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/login/logon.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/logon/App.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/logon/App.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/logon/logon.html" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/logon/logon.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/logon/logon.js" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/logon/logon.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/search/App.vue" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/search/App.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/search/search.html" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/search/search.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/multi-page-zuo/src/modules/search/search.js" afterPath="$PROJECT_DIR$/multi-page-zuo/src/modules/search/search.js" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -14,20 +167,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/nav/App.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Nav.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/components/nav/Nav.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
+            <state relative-caret-position="4736">
               <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
               <folding />
             </state>
@@ -37,7 +180,7 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/multi-page-zuo/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
+            <state relative-caret-position="32">
               <caret line="1" column="27" lean-forward="true" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
               <folding />
             </state>
@@ -166,14 +309,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="zuo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zuo" type="462c0819:PsiDirectoryNode" />
-              <item name="multi-page-zuo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="nav" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -222,23 +357,23 @@
       <workItem from="1509060967252" duration="102000" />
       <workItem from="1509061079729" duration="364000" />
       <workItem from="1509061478961" duration="147000" />
+      <workItem from="1510018127983" duration="12000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11163000" />
+    <option name="totallyTimeSpent" value="11175000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="184" y="23" width="1219" height="977" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38763577" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38731217" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.361678" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.361678" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -269,14 +404,23 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/nav/App.vue">
+    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/components/nav/Nav.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+        <state relative-caret-position="4736">
+          <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/multi-page-zuo/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="1" column="27" lean-forward="true" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/nav/App.vue" />
     <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/components/nav/Nav.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3404">
@@ -285,14 +429,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/nav/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/nav/App.vue" />
     <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/components/nav/Nav.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3404">
@@ -301,14 +438,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/nav/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/nav/App.vue" />
     <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/components/nav/Nav.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3450">
@@ -341,13 +471,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/components/about/About.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/components/about/About.vue" />
     <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/index/App.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -362,32 +486,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/nav/nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/nav/nav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/nav/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/nav/nav.html" />
+    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/nav/nav.js" />
+    <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/modules/nav/App.vue" />
     <entry file="file://$PROJECT_DIR$/multi-page-zuo/src/components/nav/Nav.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
+        <state relative-caret-position="4736">
           <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
           <folding />
         </state>
@@ -395,7 +499,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/multi-page-zuo/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
+        <state relative-caret-position="32">
           <caret line="1" column="27" lean-forward="true" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
           <folding />
         </state>
