@@ -296,6 +296,19 @@
         this.$refs.all.innerText = '全部';
         this.isImgShow = true;
         this.islistShow = false;
+        this.isShow = false;
+        var _this = this;
+        _this.posts = [];
+        _this.arrayJson = [];
+        axios.get('api/web_hot_posts').then(function (response) {
+          let array = response.data.posts;
+          for (var i = 0; i < array.length; i++) {
+            _this.posts.push(array[i]);
+            _this.arrayJson.push(array[i].comments);
+          }
+        }).catch(function (err) {
+          console.log(err);
+        });
       }
     },
     mounted() {
