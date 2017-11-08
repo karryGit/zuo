@@ -30,7 +30,7 @@
             <img v-show="isTestShow" class="fillWrite3" src="../../assets/images/请填写验证码.png"/>
             <input @focus="testCodeFocus" class="zuo-captcha" type="password" v-model="testCodeValue"
                    :placeholder="testCode" :style="{border:isBorder1}">
-            <button v-show="isLogin" @click="sendClick" class="send">发送验证码</button>
+            <button v-show="isLogin" @click="sendClick($event)" class="send">发送验证码</button>
           </div>
           <!--没有账号?去注册-->
           <div class="other-actions">
@@ -93,6 +93,7 @@
 
 <script>
   import axios from 'axios';
+
   export default {
     name: 'login',
     data() {
@@ -121,6 +122,8 @@
     },
     methods: {
       checkLogin() {
+        console.log(this.testCodeValue)
+        console.log(this.phoneValue)
         //判断手机号输入是否为空
         if (this.phoneValue.length == 0) {
           this.isBorder = '1px solid red';
@@ -137,22 +140,23 @@
         }
         let _this = this;
         axios({
-          method:'post',
-          url:'api/login_by_pass',
-          data:{
-            password:this.testCodeValue,
-            code:null,
-            phone:this.phoneValue
+          method: 'post',
+          url: 'api/login_by_pass',
+          data: {
+//            password: this.testCodeValue,
+            phone: this.phoneValue,
+            code: this.testCodeValue
           }
         }).then(function (res) {
-           if(res.data.status == 'ok'){
-             _this.testCodeValue = '';
-             _this.phoneValue = '';
-             console.log(res.data.msg)
-              alert('登录成功');
-           }else {
-             alert('登录失败')
-           }
+          console.log(res)
+          if (res.data.status == 'ok') {
+            _this.testCodeValue = '';
+            _this.phoneValue = '';
+            console.log(res.data.msg);
+            alert('登录成功');
+          } else {
+            alert('登录失败')
+          }
 
         }).catch(function (err) {
           console.log(err)
@@ -218,7 +222,7 @@
           this.isForgetPassWord = true;
         }
       },
-      sendClick(){
+      sendClick(event) {
         //判断手机号输入是否为空
         if (this.phoneValue.length == 0) {
           this.isBorder = '1px solid red';
@@ -233,6 +237,29 @@
           this.fillWriteSrc = require('../../assets/images/手机号码格式不正确.png');
           return;//不提交
         }
+        axios({
+          method: 'post',
+          url: '/api/get_login_code',
+          data: {
+            phone: this.phoneValue
+          }
+        }).then(function (res) {
+          if (res.data.status == 'ok') {
+            event.target.disabled = true;
+            var time = 60;
+            var timer = setInterval(function () {
+              time--;
+              event.target.innerText = time;
+              if (time == 0) {
+                clearInterval(timer);
+                event.target.disabled = false;
+                event.target.innerText = '发送验证码';
+              }
+            }, 1000)
+          }
+        }).catch(function (err) {
+          console.log(err);
+        })
       },
       maskClick() {
         window.location.href = 'index.html';

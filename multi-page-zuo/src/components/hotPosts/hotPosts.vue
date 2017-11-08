@@ -26,7 +26,7 @@
           <span class="dropdown-arrow"></span>
           <li class="dropdown-li" @click="dropClick">
             <a href="###" class="dropdown-li-a">
-              <img  src="../../assets/hotPostsImg/dian-b副本.png"/>
+              <img src="../../assets/hotPostsImg/dian-b副本.png"/>
               <span class="bar-all">全部</span>
             </a>
           </li>
@@ -39,7 +39,7 @@
         </ul>
       </div>
       <!--评论部分-->
-      <main id="comment-container" class="clear_float" v-for="(post,index) in posts">
+      <main id="comment-container" class="clear_float" v-if="post.comments.length != 0" v-for="(post,index) in posts">
         <!--ok编辑推荐-->
         <div class="empty"></div>
         <div class="Editor">
@@ -52,7 +52,7 @@
           <header class="comment-header-left clear_float">
             <img class="comment-header-c" src="../../assets/hotPostsImg/c.png"/>
             <div class="comment-header-left-img float-left">
-              <img :src="post.owner.avatar" alt="">
+              <img  :src="post.owner.avatar" alt="">
             </div>
             <div class="comment-header-left-text float-left">
               <a href="#">{{post.owner.username}}</a>
@@ -134,9 +134,9 @@
                   </div>
                 </div>
               </li>
-              <li class="comment-item" v-if="post.comments.length== 2">
+              <li class="comment-item" v-if="post.comments.length == 2">
                 <div class="comment-item-name">
-                  <a href="" v-html="">{{post.comments[1].author.username}}</a>
+                  <a href="">{{post.comments[1].author.username}}</a>
                   <span>-&nbsp;</span>
                   <span v-html="post.comments[1].text"></span>
                   <div class="coment-item-time clear_float">
@@ -192,26 +192,26 @@
         badImg: require('../../assets/hotPostsImg/check-box (1).png'),
         posts: [],
         arrayJson: [],
-        listArr:[
-          {color:'#E8CDA6',title:'日用'},
-          {color:'#7FEF3D',title:'公共'},
-          {color:'#FF032A',title:'关爱'},
-          {color:'#620010',title:'家居'},
-          {color:'#C900FF',title:'时尚'},
-          {color:'#FF9100',title:'美食'},
-          {color:'#00917E',title:'数码'},
-          {color:'#FEF100',title:'视觉'},
-          {color:'#00BFF7',title:'空间'}
+        listArr: [
+          {color: '#E8CDA6', title: '日用'},
+          {color: '#7FEF3D', title: '公共'},
+          {color: '#FF032A', title: '关爱'},
+          {color: '#620010', title: '家居'},
+          {color: '#C900FF', title: '时尚'},
+          {color: '#FF9100', title: '美食'},
+          {color: '#00917E', title: '数码'},
+          {color: '#FEF100', title: '视觉'},
+          {color: '#00BFF7', title: '空间'}
         ],
         isShow: false,
         isComplaintsShow: false,
         passValue: true,
         scroll: '',
         isShowShare: false,
-        colorS:'',
-        isImgShow:true,
-        islistShow:false,
-        listColor:'',
+        colorS: '',
+        isImgShow: true,
+        islistShow: false,
+        listColor: ''
       }
     },
     methods: {
@@ -272,14 +272,27 @@
         this.isShowShare = value;
       },
       //全部列表的点击事件
-      allClick(index){
+      allClick(index) {
+        var _this = this;
         this.isImgShow = false;
         this.islistShow = true;
         this.$refs.all.innerText = this.listArr[index].title;
         this.listColor = this.listArr[index].color;
+        this.isShow = false;
+        axios.get('api/posts?design=&scene=' + this.$refs.all.innerText).then(function (res) {
+          let array = res.data.posts;
+          _this.posts = [];
+          _this.arrayJson = [];
+          for (var i = 0; i < array.length; i++) {
+            _this.posts.push(array[i]);
+            _this.arrayJson.push(array[i].comments);
+          }
+        }).catch(function (err) {
+          console.log(err);
+        })
       },
       //点击全部的时候上面为全部
-      dropClick(){
+      dropClick() {
         this.$refs.all.innerText = '全部';
         this.isImgShow = true;
         this.islistShow = false;
@@ -514,7 +527,6 @@
     margin-right: 10px;
   }
 
-
   #comment-container {
     width: 600px;
     margin: 15px 0;
@@ -534,7 +546,8 @@
     top: 0;
     z-index: -5;
   }
-  .Editor:hover{
+
+  .Editor:hover {
     transition: all 1s;
     left: -110px;
   }
