@@ -52,7 +52,7 @@
           <header class="comment-header-left clear_float">
             <img class="comment-header-c" src="../../assets/hotPostsImg/c.png"/>
             <div class="comment-header-left-img float-left">
-              <img  :src="post.owner.avatar" alt="">
+              <img :src="post.owner.avatar" alt="">
             </div>
             <div class="comment-header-left-text float-left">
               <a href="#">{{post.owner.username}}</a>
@@ -81,7 +81,7 @@
         <!--评论图片-->
         <div class="comment-image-overlay">
           <img :src="post.postImage.url" alt="">
-          <div class="mask"></div>
+          <div @click="postClick($event)" class="mask"></div>
           <a href="" class="feed-halo" :style="{left:(post.haloCenterRatio.width_ratio*100)-10+'%'
           ,top:(post.haloCenterRatio.height_ratio * 100)-10 + '%'}">
             <div class="like-tip goods">
@@ -172,17 +172,19 @@
       </main>
     </section>
     <MyShare :pass="isShowShare" @shareClicked="shareClick"></MyShare>
+    <MyPost v-show="isPost"></MyPost>
   </div>
 </template>
 
 <script>
   import MyShare from '../../components/hotPosts/share';
+  import MyPost from '../../components/hotPosts/post';
   import axios from 'axios';
-
   export default {
     name: 'hotPosts',
     components: {
-      MyShare
+      MyShare,
+      MyPost
     },
     data() {
       return {
@@ -211,7 +213,8 @@
         colorS: '',
         isImgShow: true,
         islistShow: false,
-        listColor: ''
+        listColor: '',
+        isPost:false
       }
     },
     methods: {
@@ -309,6 +312,11 @@
         }).catch(function (err) {
           console.log(err);
         });
+      },
+      //点击图片弹出评论事件
+      postClick(event){
+        console.log(event)
+         this.isPost = true
       }
     },
     mounted() {
@@ -683,9 +691,7 @@
   .comment-image-overlay:hover .hide {
     opacity: 1;
   }
-
   .comment-image-overlay:hover .mask {
-
     opacity: 1;
   }
 

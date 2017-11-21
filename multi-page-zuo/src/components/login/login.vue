@@ -90,7 +90,6 @@
     </div>
   </div>
 </template>
-
 <script>
   import axios from 'axios';
 
@@ -143,21 +142,25 @@
           method: 'post',
           url: 'api/login_by_pass',
           data: {
-//            password: this.testCodeValue,
+            password: this.testCodeValue,
             phone: this.phoneValue,
-            code: this.testCodeValue
-          }
+//            code: this.testCodeValue
+          },
         }).then(function (res) {
-          console.log(res)
+          console.log(res.headers)
           if (res.data.status == 'ok') {
+            axios({
+              method:'get',
+              url:'api/currentuser',
+            }).then(function (res) {
+              console.log(res);
+            });
             _this.testCodeValue = '';
             _this.phoneValue = '';
-            console.log(res.data.msg);
             alert('登录成功');
           } else {
-            alert('登录失败')
+            alert(res.data.error.msg)
           }
-
         }).catch(function (err) {
           console.log(err)
         });
@@ -263,7 +266,7 @@
       },
       maskClick() {
         window.location.href = 'index.html';
-      }
+      },
     }
   }
 </script>
